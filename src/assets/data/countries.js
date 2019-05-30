@@ -16,29 +16,28 @@ export default [
             "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
             "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
         ],
-        description: [
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-        ],
-        main: {
-            content: [
-                { 
-                    text: [
-                        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    chartId: false
-                },
-                { 
-                    text: [
-                        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    text_below_chart: [
-                        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    chart: getObjById(1, charts),
-                }
-            ],
-            
-        },
+		description: [
+				"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+		],
+		main: {
+			content: [
+				{ 
+						text: [
+								"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+						],
+						chartId: false
+				},
+				{ 
+						text: [
+								"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+						],
+						text_below_chart: [
+								"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+						],
+						chart: getObjById(1, charts),
+				}
+			],
+		},
 	},
 	{ 
 		id: '2',

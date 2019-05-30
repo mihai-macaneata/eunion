@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from '@/router'
 
-import data from '@/assets/data/menu'
-
-console.log(data)
+//  Components
+import './components'
 
 Vue.config.productionTip = false
 

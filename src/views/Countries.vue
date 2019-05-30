@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>About</h1>
+  <div class="countries">
+    <h1>Countries</h1>
   </div>
 </template>
 
