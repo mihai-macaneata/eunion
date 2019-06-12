@@ -34,7 +34,8 @@
               v-if="hasSubMenuItems && gridReady">
               <div class="sub-menu-item" v-for="(item, key) in subMenuItems" :key="key">
                 <h4 
-                  class="sub-menu-title" 
+                  class="sub-menu-title"
+                  :class="{active: activeSubMenuId === item.id}"
                   v-if="item.name" 
                   @click="onSubMenuChange(item.id)">{{ item.name }}</h4>
                 <h4 
@@ -51,7 +52,9 @@
               :class="[gridClass]"
               v-if="hasSubTopics && subTopics && gridReady">
                 <div class="sub-topic-item" v-for="(item, key) in subTopics" :key="key">
-                  <h4 class="sub-topic-title" @click="onSubTopicChange(item.id)">{{ item.name }}</h4>
+                  <h4 
+                    :class="{active: activeSubTopicId === item.id}"
+                    class="sub-topic-title" @mouseover="onSubTopicChange(item.id)">{{ item.name }}</h4>
                 </div>
             </div>
           </transition>
@@ -209,19 +212,26 @@
         }
       },
       onSubTopicChange(target) {
-        if (this.activeSubTopicId !== target) {
-          if (this.activeSubTopicId != 0) {
-            let self = this
-            this.activeSubTopicId = 0
-            setTimeout(function() {
-              self.activeSubTopicId = target
-            }, 600)
-          } else {
-            this.activeSubTopicId = target
-          }
+        // if (this.activeSubTopicId !== target) {
+        //   if (this.activeSubTopicId != 0) {
+        //     let self = this
+        //     this.activeSubTopicId = 0
+        //     setTimeout(function() {
+        //       self.activeSubTopicId = target
+        //     }, 600)
+        //   } else {
+        //     this.activeSubTopicId = target
+        //   }
+        // } else {
+        //   this.activeSubTopicId = 0
+        // }
+        if(this.activeSubTopicId === target) {
+          return
         } else {
-          this.activeSubTopicId = 0
+            this.activeSubTopicId = 0 
+            this.activeSubTopicId = target
         }
+        // this.activeSubTopicId = target
       },
       onMenuToggle() {
         this.menuOpened = !this.menuOpened
@@ -260,6 +270,8 @@
 }
 
 .menu {
+  padding-top: 150px;
+
   width: 60%;
   height: 100%;
   float: left;
@@ -284,6 +296,10 @@
     flex-direction: column;
     .menu-item {
       position: relative;
+      margin-bottom: 3.5rem;
+      h2 {
+        font-size: 2.5rem;
+      }
       color: #fff;
       &.active {
         .menu-title {
@@ -309,8 +325,12 @@
     justify-content: space-between;
     .sub-menu-item {
       width: 100%;
+      margin-bottom: 2.5rem;
       .sub-menu-title {
         cursor: pointer;
+        &.active {
+          font-weight: 400;
+        }
         margin: 0;
         font-weight: 100;
         text-align: left;
@@ -326,10 +346,18 @@
     }
   }
   .sub-topics {
+    padding-top: 150px;
     color: #000;
-    height: 100%;
+    margin-top: -150px;
+    height: calc(100% + 150px);
     background: rgba(255, 255, 255, 0.80);
     .sub-topic-item {
+      margin-bottom: 2.5rem;
+      h4 {
+        &.active {
+          font-weight: 400;
+        }
+      }
       cursor: pointer;
       .sub-topic-title {
         font-weight: 100;
@@ -342,10 +370,13 @@
 }
 
 .content {
+  padding: 0 24px;
+  color: #000;
+  padding-top: 150px;
+  height: 100%;
   float: right;
   width: 40%;
-  height: 100%;
-  padding: 0 24px;
+  position: relative;
   color: #000;
   background: rgba(255, 255, 255, 0.95);
 }
