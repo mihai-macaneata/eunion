@@ -6,7 +6,9 @@
       <input type="text" value="Search">
     </div>
     <transition :name="transition">
-      <div id="app-menu-content" :class="[toggleable ? 'absolute' : 'relative', backgroundClass]" v-show="menuOpened">
+      <div id="app-menu-content" :class="[toggleable ? 'absolute' : 'relative']" v-show="menuOpened">
+        <div id="menu-background" :class="backgroundClass"></div>
+        <div id="menu-background-overlay"></div>
         <div class="menu">
           <div class="menu-items">
             <button v-if="toggleable" @click="onMenuToggle">Close</button>
@@ -243,7 +245,20 @@
   width: 100%;
   height: 100%;
   min-height: max-content;
+  font-weight: 100;
 }
+
+#menu-background,
+#menu-background-overlay {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+#menu-background-overlay {
+  background: rgba(0,0,0,0.35);
+}
+
 .menu {
   width: 60%;
   height: 100%;
@@ -280,7 +295,6 @@
         text-transform: uppercase;
         text-align: left;
         font-weight: 100;
-        letter-spacing: -2px;
         cursor: pointer;
         &:hover {
           font-weight: 400;
