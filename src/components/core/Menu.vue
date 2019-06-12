@@ -239,6 +239,7 @@
 <style lang="scss" scoped>
 #app-menu,
 #app-menu-content {
+  font-family: 'Roboto Condensed', sans-serif;
   width: 100%;
   height: 100%;
   min-height: max-content;
@@ -263,6 +264,9 @@
   .menu-items {
     width: 33.33%;
     padding: 0 24px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
     .menu-item {
       position: relative;
       color: #fff;
@@ -352,6 +356,9 @@
 }
 .background-aqua {
   background-color: rgba(31, 105, 182, 0.85);
+}
+.background-img {
+  background-image: url('/images/background/home.jpg')
 }
 //  Grid
 .columns-2 {

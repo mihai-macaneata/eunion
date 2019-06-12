@@ -15,7 +15,10 @@
 
 <style lang="scss">
 #app {
-  font-family: 'Chivo', sans-serif;
+  // font-family: 'Chivo', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  // font-family: 'Roboto Condensed', sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
