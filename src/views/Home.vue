@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <core-menu :toggleable="false" :background="'img'" :transition="'fade'"></core-menu>
+    <core-menu :toggleable="false" :background="'img'" :transition="'slide-fade'"></core-menu>
     <div class="container-fluid">
     </div>
   </div>

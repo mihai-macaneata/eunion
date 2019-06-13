@@ -86,11 +86,12 @@
 <script>
   import resources from '@/assets/data/menu'
   import Header from '@/components/core/Header'
+import { setTimeout } from 'timers';
   export default {
     data() {
       return {
         menus: resources,
-        activeMenu: 'Topics',
+        activeMenu: null,
         activeSubMenuId: 0,
         activeSubTopicId: 0,
         activeCountryId: 0,
@@ -179,6 +180,11 @@
       }
     },
     mounted () {
+      this.$nextTick(() => {
+        setTimeout( () => {
+          this.activeMenu = 'Topics'
+        },500)
+      })
     },
     methods: {
       onMenuChange(target) {
@@ -492,7 +498,7 @@
   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to {
-  transform: translateX(10px);
+  transform: translateX(-10px);
   opacity: 0;
 }
 
