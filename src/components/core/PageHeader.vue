@@ -1,8 +1,6 @@
 <template>
     <div class="page-header">
-       <div class="page-bg"></div>
-       <div class="page-bg-overlay"></div>
-        <fixed-header :threshold="250">
+    <fixed-header :threshold="250">
             <div class="header-navbar">
                 <div class="navbar-body cols">
                     
@@ -14,6 +12,9 @@
                 </div>
             </div>
         </fixed-header>
+       <div class="page-bg"></div>
+       <div class="page-bg-overlay"></div>
+ 
     </div>
 </template>
 <script>
@@ -43,7 +44,6 @@ export default {
         left: 0;
         top: 0;
         width: 100vw;
-        z-index: -1;
         background: #01a89e;
         color: white;
     }
@@ -52,9 +52,9 @@ export default {
         left: 0;
         top: 0;
         width: 100vw;
-        z-index: 100;
         background: #01a89e;
         color: white;
+        z-index: 100;
     }
     .page-header {
         width: 100%;

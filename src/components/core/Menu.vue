@@ -1,10 +1,13 @@
 <template>
   <div id="app-menu">
-    <Header :logoVariant="logoSrc"></Header>
-    <div class="app-menu-toolbar" v-if="toggleable">
-      <button v-if="menuOpened" @click="onMenuToggle">Close</button>
-      <button v-else-if="!menuOpened" @click="onMenuToggle">Open</button>
-      <input type="text" value="Search">
+    <div style="position:relative;z-index: 1">
+      <Header :logoVariant="logoSrc"></Header>
+    </div>
+    <div class="app-menu-toolbar">
+      <label class="searchbar">
+        <input type="text" value="Search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </label>
     </div>
     <transition :name="transition">
       <div id="app-menu-content" :class="[toggleable ? 'absolute' : 'relative']" v-show="menuOpened">
@@ -511,6 +514,23 @@
     transform: scale(1);
   }
 }
-
-
+.searchbar {
+    margin-top:1rem;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    i {
+        margin-left: -2.5rem;
+    }
+    input {
+        background: none;
+        border: none;
+        border-bottom: 1px solid white;
+        color: white;
+    }
+}
+.app-menu-toolbar {
+    position: absolute;
+    width: 30%;
+    z-index: 1;
+}
 </style>

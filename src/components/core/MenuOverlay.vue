@@ -1,5 +1,5 @@
 <template>
-  <div id="app-menu-overlay">
+  <div id="app-menu-overlay" :class="[menuOpened ? 'active' : '']">
     <div class="app-menu-toolbar" v-if="toggleable">
       <i  v-if="menuOpened" @click="onMenuToggle" class="menu-control fa fa-times" aria-hidden="true"></i>
       <i  v-else-if="!menuOpened" @click="onMenuToggle" class="menu-control fa fa-bars" aria-hidden="true"></i>
@@ -9,7 +9,7 @@
       </label>
     </div>
     <transition :name="transition">
-      <div id="app-menu-content"  style="display: none;" :class="[toggleable ? 'absolute' : 'relative']" v-show="menuOpened">
+      <div id="app-menu-content" v-show="menuOpened">
     <Header :logoVariant="logoSrc"></Header>
         <div :class="overlayClass" id="menu-underlay"></div>
         <div id="menu-background" :class="backgroundClass"></div>
@@ -94,7 +94,7 @@
         activeSubMenuId: 0,
         activeSubTopicId: 0,
         activeCountryId: 0,
-        menuOpened: true,
+        menuOpened: false,
         gridReady: true,
         customBackground: null,
         overlayCurrentClass: null,
@@ -299,11 +299,12 @@
 
 #app-menu-overlay {
     position: fixed;
-    z-index: 100000;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: 71px;
+    z-index: 99999;
+    overflow: hidden;
 }
 
 #menu-background,
@@ -453,7 +454,7 @@
   background-color: transparent;
 }
 .background-teal {
-  background-color: rgba(47, 119, 101, 0.95);
+  background-color: rgba(0, 134, 117, 0.95);
 }
 .background-peach {
   background-color: rgba(155, 61, 56, 0.85);
@@ -466,9 +467,9 @@
 }
 
 .app-menu-toolbar {
-    z-index: 100;
-    position: relative;
+    position: absolute;
     width: 30%;
+    z-index: 1;
 }
 
 .background-countries {
@@ -551,5 +552,12 @@
     vertical-align: middle;
     width: 30px;
     margin-left: 2rem;
+}
+
+#app-menu-overlay.active {
+    z-index: 9999;
+    height: 100%;
+    bottom: 0;
+    overflow: unset;
 }
 </style>

@@ -7,7 +7,7 @@
         </div>
         <div class="header" v-else>
             <div></div>
-                <router-link style="width: 75%" :to="{name: 'Home'}">
+                <router-link style="width: 75%; z-index: 1" :to="{name: 'Home'}">
                     <img class="page-logo" src="/images/background/logo-page.svg" alt="">
                 </router-link>
         </div>
@@ -37,7 +37,6 @@ export default {
 
 .header {
     position: absolute;
-    z-index: 1;
     width: 100%;
     height: 115px;
     display: flex;
@@ -49,6 +48,7 @@ export default {
     img {
       margin-top: 30px;
       width: 500px;
+      z-index: 1;
     }
     .page-logo {
         width: 100%;

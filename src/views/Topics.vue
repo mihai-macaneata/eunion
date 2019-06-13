@@ -1,7 +1,9 @@
 <template>
   <div clas="topics">
-    <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
     <Header :content="true" logoVariant="logo-page"></Header>
+    <Menu :toggleable="true" :background="'teal'" :transition="'fade'"></Menu>
+    <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
+
     <div class="cols content-cols">
       <div class="col-3 mt-4">
         <p>Chose a section for the <b> {{ subtopic_data.name }} </b> subtopic</p>
@@ -36,7 +38,7 @@
         <canvas v-if="subtopic_data" class='minimap' id="minimap" ref="minimap"></canvas>
       </div>
     </div>
-    <Menu :toggleable="true" :background="'teal'" :transition="'fade'"></Menu>
+
   </div>
 </template>
 
