@@ -22,7 +22,6 @@
               >
               <div v-if="!menu.path">
                 <h2 class="menu-title" @click="onMenuChange(key)">{{ key }}</h2>
-                
               </div>
               <router-link v-else :to="menu.path">
                 <h2 class="menu-title">{{ key }}</h2>
@@ -55,10 +54,11 @@
               :class="[gridClass]"
               v-if="hasSubTopics && subTopics && gridReady">
                 <div class="sub-topic-item" v-for="(item, key) in subTopics" :key="key">
-                  <h4 
+                  <h4
                     :class="{active: activeSubTopicId === item.id}"
-                    class="sub-topic-title" @mouseover="onSubTopicChange(item.id)">{{ item.name }}</h4>
-                </div>
+                    class="sub-topic-title" @mouseover="onSubTopicChange(item.id)">{{ item.name }}
+                  </h4>
+            </div>
             </div>
           </transition>
         </div>
@@ -70,7 +70,7 @@
             <div class="introduction">
               <p v-for="(intro, key) in content.introduction" :key="key"> {{ intro }}</p>
             </div>
-            <router-link :to="'/topics/' + content.id">
+            <router-link :to="{name: 'Topics', query: {subtopic: content.id, topic: activeSubMenuId}}">
               <h2>More</h2>
             </router-link>
           </div>

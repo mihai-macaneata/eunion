@@ -1,4 +1,6 @@
 import { getObjById } from '@/utils/helpers'
+import nationalEmissions from './htmlstrings/nationalEmissions'
+import data from './htmlstrings/data'
 
 const charts = [
     {
@@ -27,25 +29,8 @@ const subtopics = [
         description: [
             "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
         ],
-        main: {
-            content: [
-                { 
-                    text: [
-                        "textIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    chartId: false
-                },
-                {
-                    text: [
-                        "textIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    text_below_chart: [
-                        "text below-chartIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    chart: getObjById(1, charts),
-                }
-            ],
-        },
+        main: nationalEmissions,
+        data: data,
         indicators: [],
         briefing: [],
         report: [],
@@ -94,26 +79,7 @@ const subtopics = [
         description: [
             "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
         ],
-        main: {
-            content: [
-                { 
-                    text: [
-                        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    chartId: false
-                },
-                { 
-                    text: [
-                        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    text_below_chart: [
-                        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-                    ],
-                    chart: getObjById(1, charts),
-                }
-            ],
-            
-        },
+        main: nationalEmissions,
         indicators: [],
         briefing: [],
         report: [],

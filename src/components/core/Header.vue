@@ -1,13 +1,20 @@
 <template>
-    <div class="header">
-        <img id="searchImg" src="/images/background/search.svg" alt="">
-        <img :src="`/images/background/${logoSrc}.png`" alt="logo">
+    <div>
+        <div class="header" v-if="!content">
+            <img id="searchImg" src="/images/background/search.svg" alt="">
+            <img :src="`/images/background/${logoSrc}.png`" alt="logo">
+        </div>
+        <div class="header" v-else>
+            <div></div>
+            <img class="page-logo" src="/images/background/logo-page.svg" alt="">
+        </div>
     </div>
 </template>
 <script>
 export default {
     props: {
-        logoVariant: String
+        logoVariant: String,
+        content: Boolean,
     },
     computed: {
         logoSrc(){
@@ -24,6 +31,7 @@ export default {
 #searchImg {
     width: 300px;
 }
+
 .header {
     position: absolute;
     z-index: 1;
@@ -31,12 +39,16 @@ export default {
     height: 115px;
     display: flex;
     justify-content: space-between;
+    top:0;
     align-items: center;
       padding: 20px;
 
     img {
       margin-top: 30px;
       width: 500px;
+    }
+    .page-logo {
+        width: 75%;
     }
 }
 </style>

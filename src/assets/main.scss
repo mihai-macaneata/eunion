@@ -1,0 +1,44 @@
+nav.tabs {
+    button {
+        background: none;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 1.3rem;
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        padding: .5rem 1rem;
+        font-weight: 200;
+        width: calc(100% + 32px);
+        text-align: left;
+        outline: none;
+        &.tabs__item_active {
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            &:after, &:before {
+                left: calc(100% - 1px);
+                top: 50%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                // transform: scale(0.76) translateX(-10px);
+            }
+            
+            &:after {
+                border-color: rgba(255, 255, 255, 0);
+                border-left-color: #ffffff;
+                border-width: 24px;
+                margin-top: -24px;
+            }
+            &:before {
+                border-color: rgba(221, 221, 221, 0);
+                border-left-color: #ddd;
+                border-width: 25px;
+                margin-top: -25px;
+            }
+        }
+    }
+}
