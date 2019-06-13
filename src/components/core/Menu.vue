@@ -371,7 +371,7 @@
     justify-content: space-between;
     .sub-menu-item {
       width: 100%;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.2rem;
       .sub-menu-title {
         cursor: pointer;
         &.active {

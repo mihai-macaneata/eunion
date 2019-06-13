@@ -1,6 +1,6 @@
 <template>
   <div clas="topics">
-    <PageHeader></PageHeader>
+    <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
     <Header :content="true" logoVariant="logo-page"></Header>
     <div class="cols content-cols">
       <div class="col-3 mt-4">
