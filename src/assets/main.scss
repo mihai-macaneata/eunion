@@ -1,4 +1,10 @@
+body {
+    overflow-x: hidden;
+}
 nav.tabs {
+    position: sticky;
+    top:0;
+    z-index: 1;
     button {
         background: none;
         font-family: 'Roboto Condensed', sans-serif;
@@ -6,9 +12,10 @@ nav.tabs {
         display: block;
         margin-bottom: 1rem;
         border: 1px solid #ddd;
+        border-right: none;
         padding: .5rem 1rem;
         font-weight: 200;
-        width: calc(100% + 32px);
+        width: calc(100% + 30px);
         text-align: left;
         outline: none;
         &.tabs__item_active {

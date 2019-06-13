@@ -1,13 +1,13 @@
 export default `<div id="content-core" class="content-core">
 <div id="parent-fieldname-text" class="plain">
     <div>
-<h2 align="left">Introduction<b> </b></h2>
+
 </div>
 <p align="left">A new <span class="link-external"><a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.344.01.0001.01.ENG&amp;toc=OJ:L:2016:344:TOC">National Emissions Ceilings (NEC) Directive (2016/2284/EU)</a></span> entered into force on 31 December 2016. Replacing earlier legislation, (<span class="link-external"><a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32001L0081">Directive 2001/81/EC</a></span>), the new NEC Directive sets 2020 and 2030 emission reduction commitments for five main air pollutants. It also ensures that the emission ceilings for 2010 set in the earlier directive remain applicable for Member States until the end of 2019.</p>
 <p align="left">The new directive transposes the reduction commitments for 2020 agreed by the EU and its Member States under the 2012 revised <span class="link-html"><span class="link-external"><a href="http://www.unece.org/env/lrtap/multi_h1.html">Gothenburg Protocol</a></span></span> under the Convention on Long-range Transboundary Air Pollution (<span class="link-html"><span class="link-external"><a href="http://www.unece.org/env/lrtap/welcome.html">LRTAP Convention</a></span></span>). The more ambitious reduction commitments agreed for 2030 are designed to reduce the health impacts of air pollution by half compared with 2005.</p>
 <p align="left">Further, the Directive requires that the Member States draw up National Air Pollution Control Programmes that should contribute to the successful implementation of air quality plans established under the EU’s <span class="link-external"><a href="http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32008L0050&amp;from=EN">Air Quality Directive</a></span>.</p>
 <div>
-<h2 align="left">Reporting by Member States</h2>
+<h3 align="left">Reporting by Member States</h3>
 </div>
 <p align="left">The NEC Directive highlights the importance of Member States regularly reporting air pollutant emission inventories for assessing progress in reducing air pollution in the EU and for ascertaining whether Member States are in compliance with their commitments.</p>
 <p align="left">The new directive introduces a number of new reporting requirements for Member States. These are defined in Annex I of the directive and include annual information on emissions of a number of pollutants:</p>
@@ -37,12 +37,12 @@ export default `<div id="content-core" class="content-core">
 <p align="left">&nbsp;</p>
 <p align="left">To help ensure that information on emissions reported by Member States is consistent and harmonised with international requirements, the NEC Directive requires Member States to follow the methodologies agreed upon by the UNECE <span class="link-html"><span class="link-external"><a href="http://www.unece.org/env/lrtap/welcome.html">LRTAP Convention</a></span></span>. It also requires that Member States use the <a href="http://www.eea.europa.eu/publications/emep-eea-guidebook-2016" target="_self">EMEP/EEA air pollutant emission inventory guidebook</a> in preparing their inventories.</p>
 <div>
-<h2 align="left">Flexibilities</h2>
+<h3 align="left">Flexibilities</h3>
 </div>
 <p class="BodyText1">The new NEC Directive establishes a number of flexibilities (Article 5) that Member States may request are applied for the purposes of assessing compliance with their emission reduction commitments.</p>
 <p class="BodyText1">This includes an ‘adjustment’ process, in which Member States may ‘adjust’ downwards their emission inventories if non-compliance with the national ceilings is caused by countries having applied improved emission inventory methods in accordance with updated scientific knowledge since the time the 2010 ceilings were originally set. Member States wishing to adjust their data in this way must first notify the European Commission (EC) by 15<sup>&nbsp;</sup>February each year, and subsequently submit a range of documentation (by 15&nbsp;March each year) for review and decision by the European Commission.</p>
 <div>
-<h2 align="left">Annual status report and NECD data</h2>
+<h3 align="left">Annual status report and NECD data</h3>
 </div>
 <p align="left">Each year, EEA supported by its <span class="link-external"><a href="http://acm.eionet.europa.eu/">European Topic Centre on Air Pollution and Climate Change Mitigation (ETC/ACM)</a></span> compiles and checks the data reported by Member States under the NEC Directive.</p>
 <p align="left">In addition:</p>
@@ -69,9 +69,9 @@ export default `<div id="content-core" class="content-core">
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-reporting-status-2018" class="summary url">NEC Directive reporting status 2018</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -111,9 +111,9 @@ export default `<div id="content-core" class="content-core">
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-reporting-status-2017-1" class="summary url">NEC Directive reporting status 2017 - The need to reduce air pollution in Europe</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -152,9 +152,9 @@ export default `<div id="content-core" class="content-core">
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/themes/air/national-emission-ceilings/nec-directive-reporting-status-2015" class="summary url">NEC Directive reporting status 2015</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -193,9 +193,9 @@ export default `<div id="content-core" class="content-core">
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-status-report-2015" class="summary url">NEC Directive status report 2015</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -234,9 +234,9 @@ export default `<div id="content-core" class="content-core">
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-status-report-2014" class="summary url">NEC Directive status report 2014</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -275,9 +275,9 @@ export default `<div id="content-core" class="content-core">
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-status-report-2013" class="summary url">NEC Directive status report 2013</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -318,9 +318,9 @@ national emission ceilings for certain atmospheric pollutants</span>
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-status-report-2012" class="summary url">NEC Directive status report 2012</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -359,9 +359,9 @@ national emission ceilings for certain atmospheric pollutants</span>
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/evaluation-progress-nec-2012" class="summary url">Evaluation of progress under the EU National Emission Ceilings Directive</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -401,9 +401,9 @@ national emission ceilings for certain atmospheric pollutants</span>
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-status-report-2011" class="summary url">NEC Directive status report 2011</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -444,9 +444,9 @@ on national emission ceilings for certain atmospheric pollutants</span>
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-status-report-2010" class="summary url">NEC Directive status report 2010</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -487,9 +487,9 @@ on national emission ceilings for certain atmospheric pollutants</span>
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-status-report-2009" class="summary url">NEC Directive status report 2009</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -528,9 +528,9 @@ on national emission ceilings for certain atmospheric pollutants</span>
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/nec-directive-status-report-2008" class="summary url">NEC Directive status report 2008</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -567,9 +567,9 @@ on national emission ceilings for certain atmospheric pollutants</span>
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/technical_report_2008_9" class="summary url">NEC Directive status report 2007</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">
@@ -606,9 +606,9 @@ on national emission ceilings for certain atmospheric pollutants</span>
           </div>
     </a>
 
-    <h2 class="tileHeadline">
+    <h3 class="tileHeadline">
         <a href="https://www.eea.europa.eu/publications/technical_report_2007_15" class="summary url">NEC Directive status report 2006</a>
-    </h2>
+    </h3>
 
     
                 <span class="documentByLine">

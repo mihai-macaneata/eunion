@@ -7,7 +7,7 @@
         <p>Chose a section for the <b> {{ subtopic_data.name }} </b> subtopic</p>
         <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
       </div>
-      <div class="col-6">
+      <div class="col-7">
         <div v-if="topic_data && subtopic_data" class="content">
           <h1>{{subtopic_data.name}}</h1>
           <hr>
@@ -31,7 +31,8 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div id="minimap-container" class="col-2">
+        <canvas v-if="subtopic_data" class='minimap' id="minimap2" ref="minimap"></canvas>
         <canvas v-if="subtopic_data" class='minimap' id="minimap" ref="minimap"></canvas>
       </div>
     </div>
@@ -66,7 +67,7 @@ var pagemap = require('pagemap');
         currentTab: 'main'
       }
     },
- updated: function () {
+  updated: function () {
       this.$nextTick(function () {
         // Code that will run only after the
         // entire view has been rendered
@@ -74,6 +75,10 @@ var pagemap = require('pagemap');
         setTimeout( () => {
 
         let minimapEl = document.getElementById('minimap')
+        let clone = document.getElementById('minimap2').cloneNode(true)
+        clone.id = 'minimap'
+        minimapEl.parentNode.removeChild(minimapEl)
+        document.getElementById('minimap-container').appendChild(clone)
         
         if(minimapEl != undefined) {
         let minimapEl = this.$refs.minimap
@@ -136,13 +141,17 @@ var pagemap = require('pagemap');
       border-left: 1px solid #ddd;
     }
   }
-  #minimap {
+  #minimap, #minimap2 {
     position: fixed;
     top: 250px;
     right: 100px;
-    width: 260px;
+    width: 200px;
     height: calc(100% - 250px);
     z-index: 100;
+  }
+
+  .content * {
+    max-width: 100%;
   }
   
 </style>

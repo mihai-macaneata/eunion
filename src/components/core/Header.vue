@@ -6,7 +6,9 @@
         </div>
         <div class="header" v-else>
             <div></div>
-            <img class="page-logo" src="/images/background/logo-page.svg" alt="">
+                <router-link style="width: 75%" :to="{name: 'Home'}">
+                    <img class="page-logo" src="/images/background/logo-page.svg" alt="">
+                </router-link>
         </div>
     </div>
 </template>
@@ -48,7 +50,7 @@ export default {
       width: 500px;
     }
     .page-logo {
-        width: 75%;
+        width: 100%;
     }
 }
 </style>
