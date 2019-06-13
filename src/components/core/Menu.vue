@@ -512,7 +512,7 @@
   }
 }
 
-body {
+.home {
       height: 100vh;
     overflow: hidden;
 }
