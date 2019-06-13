@@ -1,5 +1,6 @@
 <template>
   <div id="app-menu">
+    <Header :logoVariant="logoSrc"></Header>
     <div class="app-menu-toolbar" v-if="toggleable">
       <button v-if="menuOpened" @click="onMenuToggle">Close</button>
       <button v-else-if="!menuOpened" @click="onMenuToggle">Open</button>
@@ -7,13 +8,15 @@
     </div>
     <transition :name="transition">
       <div id="app-menu-content" :class="[toggleable ? 'absolute' : 'relative']" v-show="menuOpened">
+        <div :class="overlayClass" id="menu-underlay"></div>
         <div id="menu-background" :class="backgroundClass"></div>
-        <div id="menu-background-overlay"></div>
+        <div :class="overlayClass" id="menu-background-overlay"></div>
         <div class="menu">
           <div class="menu-items">
             <button v-if="toggleable" @click="onMenuToggle">Close</button>
             <div 
-              class="menu-item" 
+              class="menu-item"
+              :class="{active: activeMenu === key}"
               :key="key"
               v-for="(menu, key) in menus"
               >
@@ -79,7 +82,7 @@
 
 <script>
   import resources from '@/assets/data/menu'
-
+  import Header from '@/components/core/Header'
   export default {
     data() {
       return {
@@ -89,7 +92,10 @@
         activeSubTopicId: 0,
         activeCountryId: 0,
         menuOpened: true,
-        gridReady: true
+        gridReady: true,
+        customBackground: null,
+        overlayCurrentClass: null,
+        logoSrc: null
       }
     },
     props: {
@@ -106,9 +112,20 @@
         default: 'fade'
       }
     },
+    components: {
+      Header
+    },
     computed: {
       backgroundClass() {
-        return 'background-' + this.background 
+        if (!this.customBackground) {
+          return 'background-' + this.background 
+        }
+        return 'background-' + this.customBackground         
+      },
+      overlayClass() {
+        if (this.overlayCurrentClass) {
+          return this.overlayCurrentClass
+        }
       },
       subMenuItems() {
         if (this.menus[this.activeMenu]) {
@@ -162,6 +179,13 @@
     },
     methods: {
       onMenuChange(target) {
+        if(target === 'Countries') {
+          this.customBackground = 'countries'
+          this.overlayCurrentClass = 'blue'
+        } else {
+          this.customBackground = null
+          this.overlayCurrentClass = null
+        }
         if (this.gridReady) {
           let self = this
           if (this.hasSubMenuItems) {
@@ -245,6 +269,17 @@
         return true;
       }
     },
+    watch: {
+      activeSubTopicId: {
+        handler(new_val, old_val) {
+          if((old_val !== new_val) && new_val !== 0) {
+            this.logoSrc = 'logo'
+          } else if (new_val === 0) {
+            this.logoSrc = null
+          }
+        }
+      }
+    }
   }
 </script>
 
@@ -259,7 +294,8 @@
 }
 
 #menu-background,
-#menu-background-overlay {
+#menu-background-overlay,
+#menu-underlay {
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -267,6 +303,16 @@
 }
 #menu-background-overlay {
   background: rgba(0,0,0,0.35);
+  &.blue {
+    background: transparent;
+  }
+}
+
+#menu-underlay {
+  background: transparent; 
+    &.blue {
+      background: #1C6CBB;
+    }
 }
 
 .menu {
@@ -405,6 +451,14 @@
 .background-img {
   background-image: url('/images/background/home.jpg')
 }
+
+.background-countries {
+  background-image: url('/images/background/countries.png');
+  background-size: contain!important;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  mix-blend-mode: multiply;
+}
 //  Grid
 .columns-2 {
   position: relative;
@@ -457,4 +511,5 @@
     transform: scale(1);
   }
 }
+
 </style>
