@@ -21,13 +21,13 @@
             <div v-html="subtopic_data.data"></div>
           </div>
           <div v-if="currentTab === 'indicators'" id="indicators">
-            <div v-html="subtopic.indicators"></div>
+            <div v-html="subtopic_data.indicators"></div>
           </div>
           <div v-if="currentTab === 'briefing'" id="briefing">
-            <div v-html="subtopic.briefing"></div>
+            <div v-html="subtopic_data.briefing"></div>
           </div>
           <div v-if="currentTab === 'report'" id="report">
-            <div v-html="subtopic.briefing"></div>
+            <div v-html="subtopic_data.report"></div>
           </div>
         </div>
       </div>
@@ -36,17 +36,19 @@
         <canvas v-if="subtopic_data" class='minimap' id="minimap" ref="minimap"></canvas>
       </div>
     </div>
+    <Menu :toggleable="true" :background="'teal'" :transition="'fade'"></Menu>
   </div>
 </template>
 
 <script>
 
 import Header from '@/components/core/Header'
-import Menu from '@/components/core/Menu'
+import Menu from '@/components/core/MenuOverlay'
 import PageHeader from '@/components/core/PageHeader'
 import topics from '@/assets/data/topics'
 import { getObjById } from '@/utils/helpers'
 import Tabs from 'vue-tabs-with-active-line'
+
 var pagemap = require('pagemap');
 
   export default {
@@ -149,13 +151,13 @@ var pagemap = require('pagemap');
     // top: 250px;
     top: 270px;
     right: 100px;
-    width: 200px;
+    min-width: 100px!important;
     height: 300px;
     z-index: 100;
   }
 
   .content * {
-    max-width: 100%;
+    max-width: 100%!important;
   }
   
 </style>

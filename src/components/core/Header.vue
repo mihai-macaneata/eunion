@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="header" v-if="!content">
-            <img id="searchImg" src="/images/background/search.svg" alt="">
+            <!-- <img id="searchImg" src="/images/background/search.svg" alt=""> -->
+            <div></div>
             <img :src="`/images/background/${logoSrc}.png`" alt="logo">
         </div>
         <div class="header" v-else>

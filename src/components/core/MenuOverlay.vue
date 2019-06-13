@@ -1,13 +1,16 @@
 <template>
-  <div id="app-menu">
-    <Header :logoVariant="logoSrc"></Header>
+  <div id="app-menu-overlay">
     <div class="app-menu-toolbar" v-if="toggleable">
-      <button v-if="menuOpened" @click="onMenuToggle">Close</button>
-      <button v-else-if="!menuOpened" @click="onMenuToggle">Open</button>
-      <input type="text" value="Search">
+      <i  v-if="menuOpened" @click="onMenuToggle" class="menu-control fa fa-times" aria-hidden="true"></i>
+      <i  v-else-if="!menuOpened" @click="onMenuToggle" class="menu-control fa fa-bars" aria-hidden="true"></i>
+      <label class="searchbar">
+        <input type="text" value="Search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </label>
     </div>
     <transition :name="transition">
-      <div id="app-menu-content" :class="[toggleable ? 'absolute' : 'relative']" v-show="menuOpened">
+      <div id="app-menu-content"  style="display: none;" :class="[toggleable ? 'absolute' : 'relative']" v-show="menuOpened">
+    <Header :logoVariant="logoSrc"></Header>
         <div :class="overlayClass" id="menu-underlay"></div>
         <div id="menu-background" :class="backgroundClass"></div>
         <div :class="overlayClass" id="menu-background-overlay"></div>
@@ -284,13 +287,23 @@
 </script>
 
 <style lang="scss" scoped>
-#app-menu,
+#app-menu-overlay,
 #app-menu-content {
   font-family: 'Roboto Condensed', sans-serif;
   width: 100%;
   height: 100%;
   min-height: max-content;
   font-weight: 100;
+  color: white;
+}
+
+#app-menu-overlay {
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 #menu-background,
@@ -440,7 +453,7 @@
   background-color: transparent;
 }
 .background-teal {
-  background-color: rgba(47, 119, 101, 0.85);
+  background-color: rgba(47, 119, 101, 0.95);
 }
 .background-peach {
   background-color: rgba(155, 61, 56, 0.85);
@@ -450,6 +463,12 @@
 }
 .background-img {
   background-image: url('/images/background/home.jpg')
+}
+
+.app-menu-toolbar {
+    z-index: 100;
+    position: relative;
+    width: 30%;
 }
 
 .background-countries {
@@ -511,6 +530,26 @@
     transform: scale(1);
   }
 }
-
-
+.searchbar {
+    margin-top:1rem;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    i {
+        margin-left: -2.5rem;
+    }
+    input {
+        background: none;
+        border: none;
+        border-bottom: 1px solid white;
+        color: white;
+    }
+}
+.menu-control {
+    font-size: 2rem;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+    width: 30px;
+    margin-left: 2rem;
+}
 </style>
