@@ -81,9 +81,9 @@ var pagemap = require('pagemap');
         document.getElementById('minimap-container').appendChild(clone)
         
         if(minimapEl != undefined) {
-        let minimapEl = this.$refs.minimap
+          let minimapEl = this.$refs.minimap
           pagemap(document.querySelector('#minimap'));
-          }
+        }
         },500)
 
       })
@@ -141,12 +141,16 @@ var pagemap = require('pagemap');
       border-left: 1px solid #ddd;
     }
   }
+  #minimap2 {
+    display: none;
+  }
   #minimap, #minimap2 {
-    position: fixed;
-    top: 250px;
+    position: sticky;
+    // top: 250px;
+    top: 270px;
     right: 100px;
     width: 200px;
-    height: calc(100% - 250px);
+    height: 300px;
     z-index: 100;
   }
 
