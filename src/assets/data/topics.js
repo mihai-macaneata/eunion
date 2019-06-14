@@ -33,10 +33,14 @@ const subtopics = [
         id: 2,
         name: "National emissions",
         introduction: [
-           'Mollit voluptate labore id veniam in in non sunt cillum duis mollit incididunt. Laboris ipsum exercitation ad culpa. Laborum nisi enim enim aliqua veniam reprehenderit minim et nostrud aute elit. Laboris officia tempor ut mollit minim tempor aute sint proident adipisicing ipsum. Mollit ut mollit laborum labore veniam eu enim minim pariatur cillum laboris. Cillum do amet ea do officia.'
+           `A new National Emissions Ceilings (NEC) Directive (2016/2284/EU) entered into force on 31 December 2016. Replacing earlier legislation, (Directive 2001/81/EC), the new NEC Directive sets 2020 and 2030 emission reduction commitments for five main air pollutants. It also ensures that the emission ceilings for 2010 set in the earlier directive remain applicable for Member States until the end of 2019.
+
+           The new directive transposes the reduction commitments for 2020 agreed by the EU and its Member States under the 2012 revised Gothenburg Protocol under the Convention on Long-range Transboundary Air Pollution (LRTAP Convention). The more ambitious reduction commitments agreed for 2030 are designed to reduce the health impacts of air pollution by half compared with 2005.
+           
+           Further, the Directive requires that the Member States draw up National Air Pollution Control Programmes that should contribute to the successful implementation of air quality plans established under the EU’s Air Quality Directive.`
         ],
         description: [
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+            "The National Emission Ceilings Directive sets national emission reduction commitments for Member States and the EU for five important air pollutants: nitrogen oxides (NOx), non-methane volatile organic compounds (NMVOCs), sulphur dioxide (SO2), ammonia (NH3) and fine particulate matter (PM2.5). These pollutants contribute to poor air quality, leading to significant negative impacts on human health and the environment."
         ],
         main,
         data: data,

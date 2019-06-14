@@ -1,43 +1,27 @@
 import { getObjById } from '@/utils/helpers'
+import main from './htmlstrings/nationalEmissions'
+import topics from './topics'
 
-const charts = [
-	{
-		id: 1,
-		data: []
-	}
-]
-
-export default [
+const countries = [
 	{ 
 		id: '1',
 		country: 'Austria',
 		code: 'AT',
 		introduction: [
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-            "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+            `The European River Prize is given by the International River Foundation in partnership with the international association of water companies in the Danube river catchment and other partners from a wider area. An expert from the European Environment Agency (EEA) participated in the Judging Panel. Many of the discussions at the ERRC event underlined the importance of integrated management which considers all sectors in the river basin, such as agriculture, energy or spatial planning. Moreover, the conference emphasised that the objectives of the Water Framework Directive should be coordinated with other related legislation. This integrated approach requires intense coordination, transparency and effective dialogue on the very practical level of implementation at the river basin level.`
         ],
 		description: [
-				"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+				`The River Mur rises in the Radstädter Tauern and flows into the Drava in Croatia after a length of 453 km, 298 km of which are located in the Styria region of Austria. Systematic river regulation since the late 19th Century has separated the river loops, branches and floodplain forests which are important for the health of natural systems. Modifications including hydro-power stations and embankments have also degraded habitats.
+
+				Nonetheless the Upper Mur is considered one of the most ecologically valuable rivers in Austria, not least because it is the natural breeding site of the Danube salmon. It also has the second largest alluvial forest in Austria, one of Europe´s most species-rich habitats.
+				
+				River management on the Mur has largely focused on restoring old structures and recovering natural river habitats by reconnecting them with the dynamic river-system. Besides environmental benefits, these measures have other advantages including better passive flood protection and new natural park areas for the residents.
+				
+				Looking ahead, a section of the river will be designated where hydropower plants will be prohibited. Such measures show that management of the Mur is a good example of policy integration and stakeholder dialogue, two elements which are vitally important in successful river basin management.
+				
+				`
 		],
-		main: {
-			content: [
-				{ 
-						text: [
-								"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-						],
-						chartId: false
-				},
-				{ 
-						text: [
-								"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-						],
-						text_below_chart: [
-								"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
-						],
-						chart: getObjById(1, charts),
-				}
-			],
-		},
+		main
 	},
 	{ 
 		id: '2',
@@ -175,3 +159,11 @@ export default [
 		code: 'GB'
 	},
 ]
+
+countries.forEach(country => {
+	topics.forEach(topic => {
+		country[topic.id] = topic.name 
+	})
+})
+
+export default countries

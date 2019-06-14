@@ -16,7 +16,6 @@
         <div :class="overlayClass" id="menu-background-overlay"></div>
         <div class="menu">
           <div class="menu-items">
-            <button v-if="toggleable" @click="onMenuToggle">Close</button>
             <div 
               class="menu-item"
               :class="{active: activeMenu === key}"
@@ -38,12 +37,12 @@
               :class="[gridClass]"
               v-if="hasSubMenuItems && gridReady">
               <div class="sub-menu-item" v-for="(item, key) in subMenuItems" :key="key">
-                <h4 
+                <h4
                   class="sub-menu-title"
                   :class="{active: activeSubMenuId === item.id}"
                   v-if="item.name" 
                   @click="onSubMenuChange(item.id)">{{ item.name }}</h4>
-                <h4 
+                <h4
                   class="sub-menu-title" 
                   v-else-if="item.country" 
                   @click="onCountryChange(item.id)">{{ item.country }}</h4>
@@ -56,25 +55,32 @@
               class="sub-topics"
               :class="[gridClass]"
               v-if="hasSubTopics && subTopics && gridReady">
+                <h4 style="font-weight: 600;" class="mb-2"><i>{{subMenuItems.find((item) => item.id === activeSubMenuId ).name}}</i></h4>
+                <p class="mb-5"><i>Subtopics</i></p>
                 <div class="sub-topic-item" v-for="(item, key) in subTopics" :key="key">
-                  <h4
+                  <h5
                     :class="{active: activeSubTopicId === item.id}"
                     class="sub-topic-title" @mouseover="onSubTopicChange(item.id)">{{ item.name }}
-                  </h4>
-            </div>
+                  </h5>
+                </div>
             </div>
           </transition>
         </div>
         <transition :name="transition">
           <div class="content" v-if="content">
+          <h3 class="mb-3">{{content.name || content.country}}</h3>
             <div class="description">
               <p v-for="(description, key) in content.description" :key="key"> {{ description }}</p>
             </div>
+            <h4>Introduction</h4>
             <div class="introduction">
               <p v-for="(intro, key) in content.introduction" :key="key"> {{ intro }}</p>
             </div>
-            <router-link :to="{name: 'Topics', query: {subtopic: content.id, topic: activeSubMenuId}}">
-              <h2>More</h2>
+            <router-link v-if="content.country" class="more" :to="{name: 'Countries', query: {country: content.id}}">
+              <h3>More about <b>{{content.country}}</b></h3>
+            </router-link>
+            <router-link v-else class="more" :to="{name: 'Topics', query: {subtopic: content.id, topic: activeSubMenuId}}">
+              <h3>More about <b>{{content.name}}</b></h3>
             </router-link>
           </div>
         </transition>
@@ -305,6 +311,7 @@
     height: 71px;
     z-index: 99999;
     overflow: hidden;
+    transition: none;
 }
 
 #menu-background,
@@ -407,7 +414,6 @@
   }
   .sub-topics {
     padding-top: 150px;
-    color: #000;
     margin-top: -150px;
     height: calc(100% + 150px);
     background: rgba(255, 255, 255, 0.80);
@@ -479,58 +485,7 @@
   background-position-x: 50%;
   mix-blend-mode: multiply;
 }
-//  Grid
-.columns-2 {
-  position: relative;
-  width: 66.66%;
-  padding: 0 24px;
-}
-.columns-3 {
-  position: relative;
-  width: 33.333%;
-  padding: 0 24px;
 
-}
-
-//  Transitions
-/* Fade */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-
-/* Slide fade */
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to {
-  transform: translateX(10px);
-  opacity: 0;
-}
-
-/* Bounce */
-.bounce-enter-active {
-  animation: bounce-in .5s;
-}
-.bounce-leave-active {
-  animation: bounce-in .5s reverse;
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 .searchbar {
     margin-top:1rem;
     font-size: 1.5rem;

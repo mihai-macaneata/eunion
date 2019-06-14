@@ -1,7 +1,7 @@
 <template>
-  <div clas="topics">
+  <div class="topics">
     <Header :content="true" logoVariant="logo-page"></Header>
-    <Menu :toggleable="true" :background="'teal'" :transition="'fade'"></Menu>
+    <Menu :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
     <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
 
     <div class="cols content-cols">
@@ -10,12 +10,12 @@
         <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
       </div>
       <div class="col-7">
-        <div v-if="topic_data && subtopic_data" class="content">
+        <div v-if="topic_data && subtopic_data" class="content-page">
           <h1>{{subtopic_data.name}}</h1>
           <hr>
-          <p class="intro">{{subtopic_data.introduction.join('\n')}}</p>
           <div v-if="currentTab === 'main'" id="main">
             <h2>Main</h2>
+            <p class="intro">{{subtopic_data.introduction.join('\n')}}</p>
             <div v-html="subtopic_data.main"></div>
           </div>
           <div v-if="currentTab === 'data'" id="data">
@@ -129,19 +129,22 @@ var pagemap = require('pagemap');
   .cols {
     display: flex;
   }
-  .content {
+  .content-page {
     background: white;
     padding: 2rem;
+    color: #252525;
     margin-top: -7rem;
+    font-family: lato;
+    font-size: 18px;
   }
   .intro {
     font-weight: 300;
     font-style: italic;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .content-cols {
-    .content {
+     .content-page {
       border-left: 1px solid #ddd;
     }
   }
@@ -158,7 +161,7 @@ var pagemap = require('pagemap');
     z-index: 100;
   }
 
-  .content * {
+ .content-page * {
     max-width: 100%!important;
   }
   
