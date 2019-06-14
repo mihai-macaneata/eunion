@@ -8,9 +8,9 @@ export default {
     "Topics": topics,
     "Countries": countries,
     "Catalogue": {
-        path: '/catalogue'
+        // path: '/catalogue'
     },
     "About": {
-        path: '/about'
+        // path: '/about'
     }
 }
