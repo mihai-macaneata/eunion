@@ -189,7 +189,7 @@ countries.forEach(country => {
 		country[topic.id] = topic.name 
 		country.introduction = [randomStrings[Math.floor(Math.random() * randomStrings.length-1) + 1]]
 		country.description = [randomStrings[Math.floor(Math.random() * randomStrings.length-1) + 1]]
-
+		country.main = main
 	})
 })
 
