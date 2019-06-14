@@ -50,6 +50,7 @@
         <canvas v-if="actual_data" class='minimap' id="minimap" ref="minimap"></canvas>
       </div>
     </div>
+    <Footer></Footer>
 
   </div>
 </template>
@@ -63,6 +64,7 @@ import countries from '@/assets/data/countries'
 import { getObjById } from '@/utils/helpers'
 import Tabs from 'vue-tabs-with-active-line'
 import { type } from 'os';
+import Footer from '@/components/core/Footer'
 
 
 import data from '@/assets/data/htmlstrings/data'
@@ -74,7 +76,7 @@ var pagemap = require('pagemap');
 
   export default {
     components: {
-      Header, Menu, PageHeader, Tabs
+      Header, Menu, PageHeader, Tabs, Footer
     },
     data(){
       return {
