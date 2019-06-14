@@ -1,44 +1,47 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+const Menu = () => import(/* webpackChunkName: "menu" */ '@/views/Home')
+const Countries = () => import(/* webpackChunkName: "countries" */ '@/views/Countries')
+const Catalogue = () => import(/* webpackChunkName: "catalogue" */ '@/views/Catalogue')
+const Topics = () => import(/* webpackChunkName: "topics" */ '@/views/Topics')
 
 // Routes
 import paths from './paths'
 
-function route(path, view, name, meta, children) {
-  let newChild = []
-
-  if (typeof children !== 'undefined' && children.length > 0) {
-      newChild = children.map(child => route(child.path, child.view, child.name, child.meta, child.children))
-  }
-
-  const newRoute = {
-      name: name || view,
-      path,
-      component: resolve => import(`@/views/${view}.vue`).then(resolve),
-      meta: meta || {},
-      children: newChild || [],
-  }
-
-  return newRoute
-}
-
 Vue.use(Router)
 
-// Create a new router
-const router = new Router({
-  mode: 'history',
-  routes: paths
-      .map(path => route(path.path, path.view, path.name,  path.meta, path.children))
-      .concat([{ path: '*', redirect: '/' }]),
-  scrollBehavior(to, from, savedPosition) {
-      if (savedPosition) {
-          return savedPosition
-      }
-      if (to.hash) {
-          return { selector: to.hash }
-      }
-      return { x: 0, y: 0 }
+const routes = [{
+    path: '/',
+    name: 'Home',
+    component: Menu
+  },
+  {
+    path: '/topics',
+    name: 'Topics',
+    component: Topics
+  },
+  {
+    path: '/countries',
+    name: 'Countries',
+    component: Countries
+  },
+  {
+    path: '/catalogue',
+    name: 'Catalogue',
+    component: Catalogue
   }
-})
+]
+// Create a new router
+
+const routerOptions = {
+    routes,
+    linkActiveClass: 'open active',
+    mode: 'history',
+    scrollBehavior: () => ({
+      y: 0
+    }),
+    base: '/'
+  }
+  const router = new Router(routerOptions)
 
 export default router
