@@ -60,7 +60,7 @@
                 <div class="sub-topic-item" v-for="(item, key) in subTopics" :key="key">
                   <h5
                     :class="{active: activeSubTopicId === item.id}"
-                    class="sub-topic-title" @mouseover="onSubTopicChange(item.id)">{{ item.name }}
+                    class="sub-topic-title" @click="onSubTopicChange(item.id)">{{ item.name }}
                   </h5>
                 </div>
             </div>
