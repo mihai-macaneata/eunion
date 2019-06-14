@@ -294,6 +294,15 @@ import { setTimeout } from 'timers';
             this.logoSrc = null
           }
         }
+      },
+      activeCountryId: {
+        handler(new_val, old_val) {
+          if((old_val !== new_val) && new_val !== 0) {
+            this.logoSrc = 'logo'
+          } else if (new_val === 0) {
+            this.logoSrc = null
+          }
+        }
       }
     }
   }
