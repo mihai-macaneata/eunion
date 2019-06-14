@@ -30,6 +30,8 @@ export default {
 }
 </script>
 <style lang="scss">
+    .countries {
+
     .navbar-body {
             display: flex;
     justify-content: space-between;
@@ -62,7 +64,8 @@ export default {
         position: relative;
         // position: absolute;
     }
-    .page-bg,
+
+        .page-bg,
     .page-bg-overlay {
         // background-size: cover;
         width: 100%;
@@ -81,6 +84,7 @@ export default {
 
         // background: rgba(28,108,187,0.8);
     }
+    
     h1 {
         font-weight: bold;
     }
@@ -88,6 +92,7 @@ export default {
         width: 350px;
         top: -10px;
         right: 2rem;
+    }
     }
 </style>
 

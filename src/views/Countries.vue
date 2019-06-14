@@ -1,5 +1,5 @@
 <template>
-  <div class="topics">
+  <div class="countries">
     <Header :content="true" logoVariant="logo-page"></Header>
     <Menu :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
     <PageHeader :currentSubtopic="country_data.country"></PageHeader>

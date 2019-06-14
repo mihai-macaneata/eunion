@@ -30,6 +30,8 @@ export default {
 }
 </script>
 <style lang="scss">
+    .topics {
+
     .navbar-body {
             display: flex;
     justify-content: space-between;
@@ -62,7 +64,8 @@ export default {
         position: relative;
         // position: absolute;
     }
-    .page-bg,
+
+        .page-bg,
     .page-bg-overlay {
         background-size: cover;
         width: 100%;
@@ -83,6 +86,8 @@ export default {
         top: -10px;
         right: 2rem;
     }
+    }
+
 </style>
 
 
