@@ -36,7 +36,7 @@ const routes = [{
 const routerOptions = {
     routes,
     linkActiveClass: 'open active',
-    mode: 'history',
+    mode: 'hash',
     scrollBehavior: () => ({
       y: 0
     }),
