@@ -9,8 +9,8 @@
         <div class="content-page">
           <h1 class="mb-4">Catalogue</h1>
           <div class="catalogue-header">
-            <input type="text" value="What you searched">
-            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" v-model="searchText" placeholder="Search">
+            <i @click="shuffleEverything" class="fa fa-search" aria-hidden="true"></i>
           </div>
           <div class="catalogue-body" :class="{'full-width': fullWidth}">
             <div class="catalogue-controls mb-4">
@@ -28,7 +28,7 @@
                <div class="card" v-for="card in perPage">
                  <a class="card-content" href="#">
                  <div class="card-image">
-                   <img :src='imageList[card]' alt="">
+                   <img :src='imageList[card] || imageList[[Math.floor(Math.random() * imageList.length-1) + 1]]' alt="">
                  </div>
                   <div v-if="!fullWidth" class="card-title">
                     {{titles[card]}}
@@ -146,6 +146,13 @@
   
     </div>
     <Footer></Footer>
+    <div v-if="spin" class="spin-wrapper">
+
+      <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -159,6 +166,7 @@ import { getObjById } from '@/utils/helpers'
 import Footer from '@/components/core/Footer'
 import { CollapsiblePanel } from 'vue-translate3d-collapsible'
 import countries from '@/assets/data/countries'
+import { setTimeout } from 'timers';
 
 var pagemap = require('pagemap');
 
@@ -169,6 +177,7 @@ var pagemap = require('pagemap');
     data(){
       return {
         type: [],
+        spin: false,
         collapse: {
           topics: true,
           states: false,
@@ -180,7 +189,8 @@ var pagemap = require('pagemap');
         imageList: [],
         perPage: 9,
         fullWidth: true,
-        options: [3,6,9,12,18,27,30, 48],
+        searchText: 'Enter search terms here',
+        options: [3,6,9, 18],
         titles : [],
         content: [],
       }
@@ -190,14 +200,41 @@ var pagemap = require('pagemap');
       this.generateTitles()
       this.generateContent()
       this.generateType()
+      this.searchText = this.$route.query.searchTerm
     },
 
     methods: {
+
+      generateStuff(){
+          this.generateImageUrls()
+          this.generateTitles()
+          this.generateContent()
+          this.generateType()
+      },
+
       generateImageUrls() {
         this.imageList = []
-        for(let i=0; i <= 50; i++) {
-          this.imageList.push(`https://source.unsplash.com/random/?wallpaper=${Math.round(Math.random()*10000)}`)
+        for(let i=1; i <= 10; i++) {
+            this.imageList.push(`/images/catalogue/${i}.jpg`)
         }
+        this.shuffleArray(this.imageList)
+
+      },
+      
+      shuffleArray(array) {
+          for (var i = array.length - 1; i > 0; i--) {
+              var j = Math.floor(Math.random() * (i + 1));
+              var temp = array[i];
+              array[i] = array[j];
+              array[j] = temp;
+          }
+      },
+
+      shuffleEverything() {
+        this.shuffleArray(this.imageList)
+        this.shuffleArray(this.titles)
+        this.shuffleArray(this.content)
+        this.shuffleArray(this.type)
       },
       
       generateTitles() {
@@ -218,7 +255,6 @@ var pagemap = require('pagemap');
 
       generateContent() {
         const content =  ['Et reprehenderit ipsum labore non in aliqua exercitation minim enim consequat adipisicing. Et reprehenderit ipsum labore non in aliqua exercitation minim enim consequat adipisicing', 'Esse deserunt pariatur dolore ut amet enim ullamco cillum adipisicing ipsum ex aliquip.', 'Voluptate minim excepteur non dolor irure Lorem esse ut nisi reprehenderit minim laboris.', 'Sint amet esse incididunt veniam qui do amet duis ut occaecat laborum voluptate ut aliqua.', 'Anim eu officia non exercitation reprehenderit excepteur anim minim ut officia. Voluptate minim excepteur non dolor irure Lorem esse ut nisi reprehenderit minim laboris','Voluptate minim excepteur non dolor irure Lorem esse ut nisi reprehenderit minim laboris Duis ipsum eiusmod ea sit aliquip dolore velit est.', 'Ad consectetur do amet sit sit et consectetur adipisicing sit.', 'Deserunt exercitation reprehenderit ullamco nulla dolore. Cillum magna excepteur eiusmod sint laborum consequat irure aliqua deserunt. Aute cillum exercitation aute id elit anim incididunt. Sunt irure occaecat nisi anim aute Lorem enim.', 'Eu consequat Lorem excepteur qui non id excepteur quis ea aute adipisicing sint. Enim non laboris voluptate eu sint pariatur veniam aliquip. Officia enim ullamco velit sit commodo quis ipsum dolore nulla laborum laborum. Ea dolor officia do in aliquip culpa pariatur aute sint ea pariatur elit. Occaecat mollit deserunt est ad labore sunt ex pariatur elit nostrud in. Deserunt consequat reprehenderit incididunt in Lorem aute in eiusmod aliquip ipsum cillum veniam. Qui reprehenderit est voluptate velit ipsum pariatur adipisicing in.', 'Proident et non ex ut laboris cupidatat cupidatat reprehenderit non. Nisi cillum aliqua nulla laborum mollit consequat enim culpa minim aliquip ex cupidatat minim. Amet occaecat irure mollit cillum ut nulla sint exercitation proident commodo. Aute irure duis est elit eiusmod dolor proident magna nostrud.']
-      
          for(let i=0; i <= 50; i++) {
           this.content.push(content[Math.floor(Math.random() * content.length-1) + 1])
         }
@@ -239,7 +275,6 @@ var pagemap = require('pagemap');
       return date.toLocaleString('en', options)
       },
       generateRandomStuff() {
-        console.log('asdsadas',Math.floor(Math.random() * 6))
         return Math.floor(Math.random() * 6)
       }
     },
@@ -249,10 +284,7 @@ var pagemap = require('pagemap');
             if(oldVal === null) {
               return
             }
-            this.generateImageUrls()
-            this.generateTitles()
-            this.generateContent()
-            this.generateType()
+            this.shuffleEverything()
         },
         deep: true
       },
@@ -261,10 +293,8 @@ var pagemap = require('pagemap');
             if(oldVal === null) {
               return
             }
-            this.generateImageUrls()
-            this.generateTitles()
-            this.generateContent()
-            this.generateType()
+            this.shuffleEverything()
+
         },
         deep: true
       },
@@ -273,10 +303,8 @@ var pagemap = require('pagemap');
             if(oldVal === null) {
               return
             }
-            this.generateImageUrls()
-            this.generateTitles()
-            this.generateContent()
-            this.generateType()
+           this.shuffleEverything()
+
         },
         deep: true
       }
@@ -510,4 +538,66 @@ var pagemap = require('pagemap');
   }
 }
 
+
+.spinner {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  
+  -webkit-animation: sk-rotate 2.0s infinite linear;
+  animation: sk-rotate 2.0s infinite linear;
+}
+
+.dot1, .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: blue;
+  border-radius: 100%;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
+@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+.spin-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

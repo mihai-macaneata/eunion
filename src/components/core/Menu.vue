@@ -5,8 +5,8 @@
     </div>
     <div class="app-menu-toolbar">
       <label class="searchbar">
-        <input type="text" value="Search">
-        <i class="fa fa-search" aria-hidden="true"></i>
+        <input v-model="searchText" type="text" value="Search">
+        <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
       </label>
     </div>
     <transition :name="transition">
@@ -100,6 +100,7 @@ import { setTimeout } from 'timers';
         menus: resources,
         activeMenu: null,
         activeSubMenuId: 0,
+        searchText: 'Search',
         activeSubTopicId: 0,
         activeCountryId: 0,
         menuOpened: true,
@@ -144,6 +145,8 @@ import { setTimeout } from 'timers';
         }
         return false
       },
+
+ 
       hasSubMenuItems() {
         if (Array.isArray(this.subMenuItems)) {
           return this.subMenuItems.length > 0
@@ -194,6 +197,12 @@ import { setTimeout } from 'timers';
       })
     },
     methods: {
+      goToCatalogue() {
+        this.$router.push({
+          name: 'Catalogue',
+          query: {searchTerm: this.searchText}
+        })
+      },
       onMenuChange(target) {
         if(target === 'Countries') {
           this.customBackground = 'countries'

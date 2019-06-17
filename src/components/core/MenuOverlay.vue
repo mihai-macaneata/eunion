@@ -4,8 +4,8 @@
       <i  v-if="menuOpened" @click="onMenuToggle" class="menu-control fa fa-times" aria-hidden="true"></i>
       <i  v-else-if="!menuOpened" @click="onMenuToggle" class="menu-control fa fa-bars" aria-hidden="true"></i>
       <label class="searchbar">
-        <input type="text" value="Search">
-        <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="text" value="Search" v-model="searchText">
+        <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
       </label>
     </div>
     <transition :name="transition">
@@ -102,6 +102,7 @@
         activeCountryId: 0,
         menuOpened: false,
         gridReady: true,
+        searchText: 'Search',
         customBackground: null,
         overlayCurrentClass: null,
         logoSrc: null
@@ -187,6 +188,12 @@
     mounted () {
     },
     methods: {
+      goToCatalogue() {
+        this.$router.push({
+          name: 'Catalogue',
+          query: {searchTerm: this.searchText}
+        })
+      },
       onMenuChange(target) {
         if(target === 'Countries') {
           this.customBackground = 'countries'

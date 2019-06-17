@@ -257,3 +257,26 @@ nav.tabs {
 button {
   outline: none!important;
 }
+
+
+@media(max-width: 700px) {
+  #minimap-container {
+    display: none;
+  }
+
+  .searchbar {
+    display: none;
+  }
+  .cols.content-cols {
+    display: block!important;
+    > div {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+    .content-page {
+      margin-top: 0;
+    }
+
+  }
+}

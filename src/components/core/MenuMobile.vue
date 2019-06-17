@@ -350,8 +350,7 @@ import { setTimeout } from 'timers';
 }
 
 .menu {
-    padding: 0 24px;
-
+  padding: 0 24px;
   padding-top: 120px;
   width: 100%;
   min-height: max-content;
