@@ -43,11 +43,17 @@ export default {
     justify-content: space-between;
     top:0;
     align-items: center;
-      padding: 20px;
+    @media (max-width: 700px) {
+        padding: 5px;
+    }
 
     img {
       margin-top: 30px;
       width: 500px;
+      @media (max-width: 700px) {
+          width: 100%;
+          margin-top: .5rem;
+      }
       z-index: 1;
     }
     .page-logo {

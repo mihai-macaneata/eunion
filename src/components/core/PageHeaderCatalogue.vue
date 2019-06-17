@@ -67,16 +67,17 @@ export default {
 
         .page-bg,
     .page-bg-overlay {
-        // background-size: cover;
+        background-size: cover;
         width: 100%;
         height: 100%;
         position: absolute;
-        background: darkred;
-
+        background-image: url('/images/background/catalogue.jpg');
+        background-position-y: -100%;
     }
 
+
     .page-bg-overlay {
-        background: rgba(0,0,0,0.5);
+        background: rgba(3, 26, 78, 0.8);
 
         // background: rgba(28,108,187,0.8);
     }

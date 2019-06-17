@@ -15,6 +15,7 @@
 
 <style lang="scss">
 @import '@/assets/main.scss';
+
 #app {
   // font-family: 'Chivo', sans-serif;
   font-family: 'Roboto', sans-serif;
