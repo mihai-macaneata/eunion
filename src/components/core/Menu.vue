@@ -193,6 +193,12 @@ import { setTimeout } from 'timers';
       this.$nextTick(() => {
         setTimeout( () => {
           this.activeMenu = 'Topics'
+              setTimeout( () => {
+                this.activeSubMenuId = 2
+                  setTimeout( () => {
+                      this.activeSubTopicId = 1
+                  },300)
+            },400)
         },500)
       })
     },
