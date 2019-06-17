@@ -19,11 +19,6 @@ const subtopics = [
         name: "EU and national targets",
         introduction: [
             `Consequat et veniam anim cillum id occaecat dolore in ipsum ea ullamco sint. Culpa consectetur id consectetur eiusmod consectetur dolor id duis veniam et. Sint non officia proident quis. Labore incididunt commodo ut sit sit ex ullamco aliqua consectetur quis quis do incididunt ut. Laboris cillum quis aute pariatur eiusmod qui et laborum ipsum occaecat sint dolor aute cupidatat.
-
-Excepteur in mollit proident duis. Laborum velit labore culpa exercitation occaecat culpa non esse id. Excepteur exercitation laboris sint do mollit fugiat est quis laboris do. Aute reprehenderit ex tempor excepteur irure amet in cillum. Pariatur nisi minim sit in eu nisi nulla consequat sint ex reprehenderit voluptate nisi. Dolore cillum exercitation excepteur cupidatat. Culpa consequat cupidatat aute sunt consequat aute ad.
-
-Ut cillum reprehenderit nisi est culpa irure pariatur sit aliqua ea mollit nostrud. Duis sunt nulla do elit pariatur occaecat nostrud commodo laborum adipisicing eiusmod eiusmod nostrud dolor. Incididunt nulla Lorem id laboris do ex fugiat dolor id sint veniam fugiat commodo. Sunt ea sint est nisi duis dolore elit adipisicing. Laborum occaecat aliqua laboris culpa excepteur in in officia irure qui aute ullamco laborum nostrud.
-
 Reprehenderit est elit labore dolore. Pariatur ea id sunt ut nostrud reprehenderit nostrud cillum est dolor magna sunt. Qui labore aliqua nostrud officia nostrud consectetur consectetur.`
         ],
          description: [
