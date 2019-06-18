@@ -3,7 +3,7 @@
         <div class="header" v-if="!content">
             <!-- <img id="searchImg" src="/images/background/search.svg" alt=""> -->
             <div></div>
-            <img :src="`/images/background/${logoSrc}.svg`" alt="logo">
+            <img style="width: 550px" :src="`/images/background/${logoSrc}.svg`" alt="logo">
         </div>
         <div class="header" v-else>
             <div></div>
