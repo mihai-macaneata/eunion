@@ -10,7 +10,7 @@ export default {
     "Catalogue": {
         path: '/catalogue'
     },
-    "About": {
-        // path: '/about'
+    "Home": {
+        path: '/'
     }
 }

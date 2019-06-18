@@ -348,6 +348,7 @@
   background: transparent; 
     &.blue {
       background: #004B87;
+      opacity: 0.95;
     }
 }
 
@@ -494,11 +495,9 @@
 }
 
 .background-countries {
-  background-image: url('/images/background/countries.png');
   background-size: contain!important;
   background-repeat: no-repeat;
   background-position-x: 50%;
-  mix-blend-mode: multiply;
 }
 
 .searchbar {
