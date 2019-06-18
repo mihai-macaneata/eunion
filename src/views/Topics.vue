@@ -136,7 +136,7 @@ var pagemap = require('pagemap');
     color: #252525;
     margin-top: -7rem;
     font-family: lato;
-    font-size: 18px;
+    font-size: 16px;
   }
   .intro {
     font-weight: 300;

@@ -159,7 +159,7 @@ var pagemap = require('pagemap');
     background: white;
     padding: 2rem;
     color: #252525;
-    margin-top: -12rem;
+    margin-top: -7rem;
     font-family: lato;
     font-size: 18px;
   }

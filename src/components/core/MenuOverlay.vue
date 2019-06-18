@@ -339,7 +339,6 @@
   position: absolute;
 }
 #menu-background-overlay {
-  background: rgba(0,0,0,0.35);
   &.blue {
     background: transparent;
   }
@@ -348,7 +347,7 @@
 #menu-underlay {
   background: transparent; 
     &.blue {
-      background: #1C6CBB;
+      background: #004B87;
     }
 }
 
@@ -408,7 +407,7 @@
     justify-content: space-between;
     .sub-menu-item {
       width: 100%;
-      margin-bottom: 1.2rem;
+      margin-bottom: .8rem;
       .sub-menu-title {
         cursor: pointer;
         &.active {

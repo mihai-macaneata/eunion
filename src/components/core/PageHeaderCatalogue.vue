@@ -7,7 +7,7 @@
                     <div class="col-3"></div>
                     <div class="col-7" style="padding: .8rem 2.5rem;"><h3 class="thin">{{currentSubtopic}}</h3></div>
                     <router-link class="col-2" :to="{name: 'Home'}">
-                        <img class="page-logo-sm" src="/images/background/logo white.svg" alt="">
+                        <img class="page-logo-sm" src="/images/background/logo_white_small.svg" alt="">
                     </router-link>
                 </div>
             </div>
@@ -46,7 +46,8 @@ export default {
         left: 0;
         top: 0;
         width: 100vw;
-        background: #01a89e;
+        background: #861F41;
+
         color: white;
     }
     .header-navbar.vue-fixed-header--isFixed {
@@ -54,13 +55,13 @@ export default {
         left: 0;
         top: 0;
         width: 100vw;
-        background: #01a89e;
+        background: #861F41;
         color: white;
         z-index: 100;
     }
     .page-header {
         width: 100%;
-        height:450px;
+        height:250px;
         position: relative;
         // position: absolute;
     }
@@ -71,13 +72,13 @@ export default {
         width: 100%;
         height: 100%;
         position: absolute;
-        background-image: url('/images/background/catalogue.jpg');
+        // background-image: url('/images/background/catalogue.jpg');
         background-position-y: -100%;
     }
 
 
     .page-bg-overlay {
-        background: rgba(3, 26, 78, 0.8);
+        background: #861F41;
 
         // background: rgba(28,108,187,0.8);
     }

@@ -351,7 +351,7 @@ import { setTimeout } from 'timers';
 #menu-underlay {
   background: transparent; 
     &.blue {
-      background: #1C6CBB;
+      background: #004B87;
     }
 }
 
@@ -411,7 +411,7 @@ import { setTimeout } from 'timers';
     justify-content: space-between;
     .sub-menu-item {
       width: 100%;
-      margin-bottom: 1.2rem;
+      margin-bottom: .8rem;
       .sub-menu-title {
         cursor: pointer;
         &.active {

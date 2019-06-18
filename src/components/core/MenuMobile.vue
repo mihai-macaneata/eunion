@@ -375,6 +375,9 @@ import { setTimeout } from 'timers';
     .menu-item {
       position: relative;
       margin-bottom: 3.5rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
       h2 {
         font-size: 2.5rem;
       }

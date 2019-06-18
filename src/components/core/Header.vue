@@ -3,11 +3,11 @@
         <div class="header" v-if="!content">
             <!-- <img id="searchImg" src="/images/background/search.svg" alt=""> -->
             <div></div>
-            <img :src="`/images/background/${logoSrc}.png`" alt="logo">
+            <img :src="`/images/background/${logoSrc}.svg`" alt="logo">
         </div>
         <div class="header" v-else>
             <div></div>
-                <router-link style="width: 75%; z-index: 1" :to="{name: 'Home'}">
+                <router-link style="z-index: 1" :to="{name: 'Home'}">
                     <img class="page-logo" src="/images/background/logo-page.svg" alt="">
                 </router-link>
         </div>
@@ -48,8 +48,6 @@ export default {
     }
 
     img {
-      margin-top: 30px;
-      width: 500px;
       @media (max-width: 700px) {
           width: 100%;
           margin-top: .5rem;
@@ -57,7 +55,17 @@ export default {
       z-index: 1;
     }
     .page-logo {
-        width: 100%;
+        width: 750px;
+    }
+}
+
+.content-page {
+
+    h3 {
+        font-size: 1.4rem!important;
+    }
+    h2 {
+        font-size: 1.6rem!important;
     }
 }
 </style>
