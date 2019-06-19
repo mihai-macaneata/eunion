@@ -222,9 +222,9 @@ import { setTimeout } from 'timers';
           let self = this
           if (this.hasSubMenuItems) {
             this.gridReady = false;
-            setTimeout(function() {
-              self.activeMenu = ''
-            }, 500)
+            // setTimeout(function() {
+            //   self.activeMenu = ''
+            // }, 500)
             setTimeout(function() {
               self.activeMenu = target
               self.gridReady = true;
