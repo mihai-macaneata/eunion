@@ -14,6 +14,13 @@
         <div :class="overlayClass" id="menu-underlay"></div>
         <div id="menu-background" :class="backgroundClass"></div>
         <div :class="overlayClass" id="menu-background-overlay"></div>
+        
+          <transition :name="transition">
+            <div v-if="!activeMenu" class="floating-chart">
+              <!-- <h1><b>Welcome</b></h1> -->
+              <img src="/images/background/infographic.svg">
+            </div>
+            </transition>
         <div class="menu">
           <div class="menu-items">
             <button v-if="toggleable" @click="onMenuToggle">Close</button>
@@ -190,17 +197,11 @@ import { setTimeout } from 'timers';
       }
     },
     mounted () {
-      this.$nextTick(() => {
-        setTimeout( () => {
-          this.activeMenu = 'Topics'
-              setTimeout( () => {
-                this.activeSubMenuId = 2
-                  setTimeout( () => {
-                      this.activeSubTopicId = 1
-                  },300)
-            },400)
-        },500)
-      })
+      // this.activeMenu = 'Topics'
+      // this.$nextTick(() => {
+      //   setTimeout( () => {
+      //   },500)
+      // })
     },
     methods: {
       goToCatalogue() {
@@ -342,7 +343,7 @@ import { setTimeout } from 'timers';
   position: absolute;
 }
 #menu-background-overlay {
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.45);
   &.blue {
     background: transparent;
   }
@@ -452,6 +453,22 @@ import { setTimeout } from 'timers';
       }
     }
   }
+}
+
+.floating-chart {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 150px);
+    top: 150px;
+    bottom: 0;
+    padding-bottom: 2rem;
+    padding-right: 1rem;
+    img {
+      width: 100%;
+      max-height: 100%;
+      padding-left: 241px;
+    }
 }
 
 .content {
