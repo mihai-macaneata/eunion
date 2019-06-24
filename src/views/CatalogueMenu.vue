@@ -1,16 +1,11 @@
 <template>
   <div class="catalogue">
-    <Header :content="true" logoVariant="logo-page"></Header>
-    <Menu :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
-    <PageHeader currentSubtopic="Catalogue"></PageHeader>
-
     <div class="cols content-cols">
       <div class="col-9 mt-4">
         <div class="content-page">
-          <h1 class="mb-4">Catalogue</h1>
           <div class="catalogue-header">
             <input type="text" v-model="searchText" placeholder="Search">
-            <i @click="shuffleEverything" class="fa fa-search" aria-hidden="true"></i>
+            <i @click="goToCatalogue" v-model="searchText" class="fa fa-search" aria-hidden="true"></i>
           </div>
           <div class="catalogue-body" :class="{'full-width': fullWidth}">
             <div class="catalogue-controls mb-4">
@@ -20,7 +15,7 @@
                   <option v-for="option in options" :value="option">{{ option }}</option>
                   </select>
               </div>
-              <button class="btn btn-primary" @click="fullWidth = !fullWidth">Toggle display type</button>
+              <button class="btn btn-sm btn-outline-primary" @click="fullWidth = !fullWidth">Toggle display type</button>
             </div>
           
              <div class="cards">
@@ -62,7 +57,7 @@
         </div>
       </div>
       <div class="col-3 mt-4">
-        <div class="content-page catalogue-filters">
+        <div class="content-page filter-results-section">
           <h3><b>Filter results</b></h3>
 
 
@@ -145,7 +140,6 @@
       </div>
   
     </div>
-    <Footer></Footer>
     <div v-if="spin" class="spin-wrapper">
 
       <div class="spinner">
@@ -183,6 +177,8 @@ var pagemap = require('pagemap');
           states: false,
           type: false
         },
+        searchText: 'Search',
+
         topics: topics.map(t => ({name: t.name, selected: false})),
         states: countries.map(t => ({name: t.country, selected: false})),
         types:   ['Data reults page (interactive data)', 'Topic page', 'Country page', 'Assesments result page'].map(t => ({name: t, selected: false})),
@@ -204,7 +200,12 @@ var pagemap = require('pagemap');
     },
 
     methods: {
-
+      goToCatalogue() {
+        this.$router.push({
+          name: 'Catalogue',
+          query: {searchTerm: this.searchText}
+        })
+      },
       generateStuff(){
           this.generateImageUrls()
           this.generateTitles()
@@ -313,9 +314,22 @@ var pagemap = require('pagemap');
 </script>
 
 <style lang="scss" scoped>
-.catalogue-filters {
-  position: sticky;
-  top:0;
+.filter-results-section{
+    position: sticky;
+    top:0;
+}
+.catalogue{
+    font-family: Lato;
+    z-index: 1;
+    position: relative;
+        overflow: auto;
+    height: 100%;
+        display: block;
+    font-weight: initial;
+        margin-top: 7rem;
+    padding-bottom: 2rem;
+    .content-cols {
+    }
 }
   .filters-list {
     .filter {
@@ -342,7 +356,7 @@ var pagemap = require('pagemap');
         left: .3rem;
         // top: 50%;
         top: 0;
-        line-height: 2.2;
+        line-height: 1.3;
         // transform: translateY(-50%);
       }
     }
@@ -368,35 +382,23 @@ var pagemap = require('pagemap');
 
   .catalogue-body {
     padding: 1rem;
-    border: 1px solid #ddd;
     margin-top: -1px;
   }
   .cols {
     display: flex;
   }
   .content-page {
-    background: white;
     padding: 2rem;
     color: #252525;
-    margin-top: -7rem;
     font-family: lato;
-    font-size: 18px;
+    font-size: 12px;
   }
   .intro {
     font-weight: 300;
     font-style: italic;
-    font-size: 16px;
+    font-size: 12px;
   }
 
-  .content-cols {
-    .col-9 {
-
-      .content-page {
-        border-left: 1px solid #ddd;
-      border-right: 1px solid #ddd;
-    }
-    }
-  }
   #minimap2 {
     display: none;
   }

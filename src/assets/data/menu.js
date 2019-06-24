@@ -7,9 +7,7 @@ export default {
     // },
     "Topics": topics,
     "Countries": countries,
-    "Catalogue": {
-        path: '/catalogue'
-    },
+    "Catalogue": {},
     "Home": {
         path: '/'
     }

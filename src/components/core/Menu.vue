@@ -92,6 +92,13 @@
             </router-link>
           </div>
         </transition>
+
+
+        <transition :name="transition">
+          <div class="catalogue-menu" v-if="activeMenu === 'Catalogue'">
+            <CatalogueMenu></CatalogueMenu>
+          </div>
+        </transition>
       </div>
     </transition>
   </div>
@@ -100,7 +107,8 @@
 <script>
   import resources from '@/assets/data/menu'
   import Header from '@/components/core/Header'
-import { setTimeout } from 'timers';
+  import { setTimeout } from 'timers'
+  import CatalogueMenu from '@/views/CatalogueMenu'
   export default {
     data() {
       return {
@@ -132,7 +140,7 @@ import { setTimeout } from 'timers';
       }
     },
     components: {
-      Header
+      Header, CatalogueMenu
     },
     computed: {
       backgroundClass() {
@@ -316,6 +324,15 @@ import { setTimeout } from 'timers';
           if((old_val !== new_val) && new_val !== 0) {
             this.logoSrc = 'logo'
           } else if (new_val === 0) {
+            this.logoSrc = null
+          }
+        }
+      },
+      activeMenu: {
+        handler(new_val, old_val) {
+          if((old_val !== new_val) && new_val == 'Catalogue') {
+            this.logoSrc = 'logo'
+          } else {
             this.logoSrc = null
           }
         }
