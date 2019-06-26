@@ -152,9 +152,6 @@
 
 <script>
 
-import Header from '@/components/core/Header'
-import Menu from '@/components/core/MenuOverlay'
-import PageHeader from '@/components/core/PageHeaderCatalogue'
 import topics from '@/assets/data/topics'
 import { getObjById } from '@/utils/helpers'
 import Footer from '@/components/core/Footer'
@@ -162,11 +159,9 @@ import { CollapsiblePanel } from 'vue-translate3d-collapsible'
 import countries from '@/assets/data/countries'
 import { setTimeout } from 'timers';
 
-var pagemap = require('pagemap');
-
   export default {
     components: {
-      Header, Menu, PageHeader, Footer,CollapsiblePanel
+      CollapsiblePanel
     },
     data(){
       return {

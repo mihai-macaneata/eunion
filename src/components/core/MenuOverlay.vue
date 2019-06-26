@@ -87,7 +87,7 @@
         
         <transition :name="transition">
           <div class="catalogue-menu" v-if="activeMenu === 'Catalogue'">
-            <catalogue></catalogue>
+            <cat-menu menu="true"></cat-menu>
           </div>
         </transition>
       </div>
@@ -97,9 +97,8 @@
 
 <script>
   import resources from '@/assets/data/menu'
-  import Header from '@/components/core/Header'
   import CatalogueMenu from '@/views/CatalogueMenu'
-
+  import Header from '@/components/core/Header'
   export default {
     data() {
       return {
@@ -131,7 +130,7 @@
       }
     },
     components: {
-      Header, catalogue: CatalogueMenu
+      Header, 'cat-menu': CatalogueMenu
     },
     computed: {
       backgroundClass() {
