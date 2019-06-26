@@ -395,7 +395,7 @@
     flex-direction: column;
     .menu-item {
       position: relative;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2rem;
       h2 {
         font-size: 2.5rem;
       }

@@ -5,10 +5,11 @@ export default {
     // "Home": {
     //     path: '/'
     // },
+    "Home": {
+        path: '/'
+    },
     "Topics": topics,
     "Countries": countries,
     "Catalogue": {},
-    "Home": {
-        path: '/'
-    }
+    "About": {}
 }

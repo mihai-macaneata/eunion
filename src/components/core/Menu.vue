@@ -28,6 +28,7 @@
               class="menu-item"
               :class="{active: activeMenu === key}"
               :key="key"
+              v-if="key !== 'Home'"
               v-for="(menu, key) in menus"
               >
               <div v-if="!menu.path">
@@ -400,7 +401,7 @@
     flex-direction: column;
     .menu-item {
       position: relative;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2rem;
       h2 {
         font-size: 2.5rem;
       }
