@@ -87,7 +87,7 @@
         
         <transition :name="transition">
           <div class="catalogue-menu" v-if="activeMenu === 'Catalogue'">
-            <CatalogueMenu></CatalogueMenu>
+            <catalogue></catalogue>
           </div>
         </transition>
       </div>
@@ -131,7 +131,7 @@
       }
     },
     components: {
-      Header, CatalogueMenu
+      Header, catalogue: CatalogueMenu
     },
     computed: {
       backgroundClass() {

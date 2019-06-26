@@ -65,26 +65,40 @@ export default {
         // position: absolute;
     }
 
+    //     .page-bg,
+    // .page-bg-overlay {
+    //     // background-size: cover;
+    //     width: 100%;
+    //     height: 100%;
+    //     position: absolute;
+    //     // background-image: url('/images/background/country-sattelite-2.png');
+    // //   background-position-y: 118%;
+    //     background-size: 100%;
+    //     // background-position-y: 40%;
+    //     // background-position-x: -90%;
+    //     // background-repeat: no-repeat
+    // }
+
+    // .page-bg-overlay {
+    //     // background: rgba(0,0,0,0.5);
+    //     background: #004B87;
+    //     // background: rgba(28,108,187,0.8);
+    // }
+    
         .page-bg,
     .page-bg-overlay {
-        // background-size: cover;
+        background-size: cover;
         width: 100%;
         height: 100%;
         position: absolute;
-        // background-image: url('/images/background/country-sattelite-2.png');
-    //   background-position-y: 118%;
-        background-size: 100%;
-        // background-position-y: 40%;
-        // background-position-x: -90%;
-        // background-repeat: no-repeat
+        background-image: url('/images/background/topic-bg.jpg');
+        background-position-y: -100%;
     }
 
     .page-bg-overlay {
-        // background: rgba(0,0,0,0.5);
-        background: #004B87;
-        // background: rgba(28,108,187,0.8);
+        // background: #008675;
+        background: rgba(0,0,0, 0.35);
     }
-    
     h1 {
         font-weight: bold;
     }

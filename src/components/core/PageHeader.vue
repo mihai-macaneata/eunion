@@ -72,12 +72,13 @@ export default {
         width: 100%;
         height: 100%;
         position: absolute;
-        // background-image: url('/images/background/topic-bg.jpg');
+        background-image: url('/images/background/topic-bg.jpg');
         background-position-y: -100%;
     }
 
     .page-bg-overlay {
-        background: #008675;
+        // background: #008675;
+        background: rgba(0,0,0, 0.35);
     }
     h1 {
         font-weight: bold;
