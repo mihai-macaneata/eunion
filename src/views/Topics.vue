@@ -1,14 +1,10 @@
 <template>
   <div class="topics">
-    <Header :content="true" logoVariant="logo-page"></Header>
-    <Menu :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
+    <Menu :name="subtopic_data.name" currentPage="Topics" :tabs="tabs" :currentTab="currentTab" :handleClick="handleClick" :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
     <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
 
     <div class="cols content-cols">
-      <div class="col-3 mt-4">
-        <p>Chose a section for the <b> {{ subtopic_data.name }} </b> subtopic</p>
-        <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
-      </div>
+     <div class="col-3"></div>
       <div class="col-7">
         <div v-if="topic_data && subtopic_data" class="content-page">
           <h1>{{subtopic_data.name}}</h1>

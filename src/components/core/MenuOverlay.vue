@@ -1,21 +1,26 @@
 <template>
   <div id="app-menu-overlay" :class="[menuOpened ? 'active' : '']">
-    <div class="app-menu-toolbar" v-if="toggleable">
+    <!-- <div class="app-menu-toolbar" v-if="toggleable">
       <i  v-if="menuOpened" @click="onMenuToggle" class="menu-control fa fa-times" aria-hidden="true"></i>
       <i  v-else-if="!menuOpened" @click="onMenuToggle" class="menu-control fa fa-bars" aria-hidden="true"></i>
-      <label class="searchbar">
-        <input type="text" value="Search" v-model="searchText">
-        <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
-      </label>
-    </div>
+      
+    </div> -->
     <transition :name="transition">
       <div id="app-menu-content" v-show="menuOpened">
-    <Header :logoVariant="logoSrc"></Header>
-        <div :class="overlayClass" id="menu-underlay"></div>
-        <div id="menu-background" :class="backgroundClass"></div>
-        <div :class="overlayClass" id="menu-background-overlay"></div>
+    <!-- <Header :logoVariant="logoSrc"></Header> -->
+
+        <!-- <div :class="overlayClass" id="menu-underlay"></div> -->
+        <!-- <div id="menu-background" :class="backgroundClass"></div> -->
+        <!-- <div :class="overlayClass" id="menu-background-overlay"></div> -->
         <div class="menu">
           <div class="menu-items">
+            <div class="menu-items-header">
+              <img class="" src="/images/background/logo_white_small.svg" alt="">
+              <label class="searchbar">
+                <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" value="Search" v-model="searchText">
+              </label>
+            </div>
             <div 
               class="menu-item"
               :class="{active: activeMenu === key}"
@@ -28,6 +33,11 @@
               <router-link v-else :to="menu.path">
                 <h2 class="menu-title">{{ key }}</h2>
               </router-link>
+
+               <div v-if="currentPage === key" class="menuTabs">
+                <span class="muted">Spain</span>
+                <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
+              </div>
             </div>
           </div>
 
@@ -99,15 +109,17 @@
   import resources from '@/assets/data/menu'
   import CatalogueMenu from '@/views/CatalogueMenu'
   import Header from '@/components/core/Header'
+import Tabs from 'vue-tabs-with-active-line'
+
   export default {
     data() {
       return {
         menus: resources,
-        activeMenu: 'Topics',
+        activeMenu: null,
         activeSubMenuId: 0,
         activeSubTopicId: 0,
         activeCountryId: 0,
-        menuOpened: false,
+        menuOpened: true,
         gridReady: true,
         searchText: 'Search',
         customBackground: null,
@@ -127,10 +139,16 @@
       transition: {
         type: String,
         default: 'fade'
-      }
+      },
+      currentPage: String,
+      tabs: Array,
+      currentTab: String,
+      handleClick: Function,
+      name: String
     },
     components: {
-      Header, 'cat-menu': CatalogueMenu
+      Header, 'cat-menu': CatalogueMenu,
+      Tabs
     },
     computed: {
       backgroundClass() {
@@ -202,6 +220,13 @@
         })
       },
       onMenuChange(target) {
+        console.log(target, this.activeMenu)
+        if(this.activeMenu == target) {
+          console.log('here')
+          this.activeMenu = null
+          return
+        }
+
         if(target === 'Countries') {
           this.customBackground = 'countries'
           this.overlayCurrentClass = 'blue'
@@ -325,6 +350,10 @@
 </script>
 
 <style lang="scss" scoped>
+
+
+
+
 #app-menu-overlay,
 #app-menu-content {
   font-family: 'Roboto Condensed', sans-serif;
@@ -368,9 +397,9 @@
     }
 }
 
-.menu {
-  padding-top: 150px;
 
+.menu {
+  padding-top: 2rem;
   width: 60%;
   height: 100%;
   float: left;
@@ -387,36 +416,7 @@
       text-decoration: none;
     }
   }
-  .menu-items {
-    width: 33.33%;
-    padding: 0 24px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    .menu-item {
-      position: relative;
-      margin-bottom: 2rem;
-      h2 {
-        font-size: 2.5rem;
-      }
-      color: #fff;
-      &.active {
-        .menu-title {
-          font-weight: 400;
-        }
-      }
-      .menu-title {
-        margin: 0;
-        text-transform: uppercase;
-        text-align: left;
-        font-weight: 100;
-        cursor: pointer;
-        &:hover {
-          font-weight: 400;
-        }
-      }
-    }
-  }
+
   .sub-menu {
     position: relative;
     display: flex;
@@ -448,7 +448,7 @@
     padding-top: 150px;
     margin-top: -150px;
     height: calc(100% + 150px);
-    background: rgba(255, 255, 255, 0.80);
+    background: rgba(215, 215, 215, 1);
     .sub-topic-item {
       margin-bottom: 2.5rem;
       h4 {
@@ -470,13 +470,13 @@
 .content {
   padding: 0 24px;
   color: #000;
-  padding-top: 150px;
+  padding-top: 2rem;
   height: 100%;
   float: right;
   width: 40%;
   position: relative;
   color: #000;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 1);
 }
 
 //  Props clases
@@ -516,17 +516,24 @@
   background-position-x: 50%;
 }
 
+.menu-items-header {
+    background: rgba(31, 105, 182, 0.85);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-top: -1rem;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
 .searchbar {
-    margin-top:1rem;
-    font-size: 1.5rem;
-    margin-left: 2rem;
     i {
-        margin-left: -2.5rem;
+        margin-right: 1rem;
     }
     input {
         background: none;
         border: none;
-        border-bottom: 1px solid white;
         color: white;
     }
 }

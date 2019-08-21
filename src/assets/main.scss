@@ -4,6 +4,20 @@ body {
 .content img {
     max-width: 100%;
 }
+
+.menuTabs{
+  background: white;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding: 1rem;
+  .muted {
+    color: #aaa;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 1rem;
+  }
+}
+
 nav.tabs {
     position: sticky;
     top:70px;
@@ -11,44 +25,29 @@ nav.tabs {
     button {
         background: none;
         font-family: 'Roboto Condensed', sans-serif;
-        font-size: 1.3rem;
+        font-size: 1rem;
         display: block;
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-right: none;
+        border: none;
+        border-radius: 3px;
         padding: .5rem 1rem;
         font-weight: 200;
-        width: calc(100% + 30px);
         text-align: left;
+        width: 100%;
         outline: none;
         &.tabs__item_active {
             font-weight: bold;
+        background: #eee;
+          display: flex;
+          justify-content: space-between;
             position: relative;
             z-index: 1;
-            &:after, &:before {
-                left: calc(100% - 1px);
-                top: 50%;
-                border: solid transparent;
-                content: " ";
-                height: 0;
-                width: 0;
-                position: absolute;
-                pointer-events: none;
-                // transform: scale(0.76) translateX(-10px);
-            }
-            
             &:after {
-                border-color: rgba(255, 255, 255, 0);
-                border-left-color: #ffffff;
-                border-width: 24px;
-                margin-top: -24px;
+                content: "\f054";
+                font-family: FontAwesome;
+                text-align: right;
+                color: #bbb;
             }
-            &:before {
-                border-color: rgba(221, 221, 221, 0);
-                border-left-color: #ddd;
-                border-width: 25px;
-                margin-top: -25px;
-            }
+           
         }
     }
 }
@@ -100,43 +99,50 @@ nav.tabs {
   }
 
   .menu {
+
     .menu-items {
+      // width: 33.33%;
+      width: 249px;
+      position: absolute;
+      z-index: 1;
+      border-radius: 6px;
+      margin-left: 2rem;
+      padding: 1rem;
+      background: black;
+      // height: 300px;
+      display: inline-block;
+      .menu-item {
         position: relative;
-        &:before {
-            content: '';
-            width: 80px;
-            border-top: 1px solid white;
-            display: block;
-            margin-bottom: 45px;
+        h2.menu-title {
+          font-size: 1.3rem!important;
+          margin-bottom: 1.5rem;
         }
+        color: #fff;
+        &.active {
+          .menu-title {
+            font-weight: 400;
+          }
+        }
+        .menu-title {
+          text-transform: uppercase;
+          text-align: left;
+          font-weight: 100;
+          cursor: pointer;
+          &:hover {
+            font-weight: 400;
+          }
+        }
+      }
     }
 
-    .menu-item {
-        position: relative;
-        &:after {
-            content: '';
-            width: 80px;
-            border-top: 1px solid white;
-            display: block;
-            margin-top: 45px;
-        }
-        &.active {
-            .menu-title {
-                position: relative;
-                &:before {
-                    content: ">";
-                    font-family: Roboto;
-                    font-size: 4rem;
-                    font-weight: 100;
-                    line-height: 0;
-                    position: absolute;
-                    right: 0;
-                    top:50%;
-                    transform:translateY(-50%);
-                    transition: all 200ms;
-                }
-            }
-        }
+    .sub-menu {
+      padding-top: 150px;
+      margin-top: -150px;
+      height: calc(100% + 150px);
+      background: rgba(0, 134, 117, 0.95);
+      padding-left: 1rem;
+      padding-left: 40%;
+      width: 66.66%;
     }
 
     // .sub-menu {
@@ -291,3 +297,5 @@ button {
     height: 100vh;
     top: 0;
 }
+
+
