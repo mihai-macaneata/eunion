@@ -27,15 +27,15 @@
               :key="key"
               v-for="(menu, key) in menus"
               >
+
               <div v-if="!menu.path">
                 <h2 class="menu-title" @click="onMenuChange(key)">{{ key }}</h2>
               </div>
               <router-link v-else :to="menu.path">
                 <h2 class="menu-title">{{ key }}</h2>
               </router-link>
-
                <div v-if="currentPage === key" class="menuTabs">
-                <span class="muted">Spain</span>
+                <div class="muted">{{name}}</div>
                 <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
               </div>
             </div>
@@ -516,27 +516,6 @@ import Tabs from 'vue-tabs-with-active-line'
   background-position-x: 50%;
 }
 
-.menu-items-header {
-    background: rgba(31, 105, 182, 0.85);
-    margin-left: -1rem;
-    margin-right: -1rem;
-    margin-top: -1rem;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-}
-
-.searchbar {
-    i {
-        margin-right: 1rem;
-    }
-    input {
-        background: none;
-        border: none;
-        color: white;
-    }
-}
 .menu-control {
     font-size: 2rem;
     display: inline-block;

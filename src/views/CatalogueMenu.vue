@@ -15,7 +15,7 @@
                   <option v-for="option in options" :value="option">{{ option }}</option>
                   </select>
               </div>
-              <button class="btn btn-sm btn-outline-primary" @click="fullWidth = !fullWidth">Toggle display type</button>
+              <button class="btn btn-sm btn-outline-primary" @click="fullWidth = !fullWidth"><i class="fa fa-list-ul"></i></button>
             </div>
           
              <div class="cards">

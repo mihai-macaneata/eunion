@@ -1,17 +1,6 @@
 <template>
     <div class="page-header">
-    <fixed-header :threshold="250">
-            <div class="header-navbar">
-                <div class="navbar-body cols">
-                    
-                    <div class="col-3"></div>
-                    <div class="col-7" style="padding: .8rem 2.5rem;"><h3 class="thin">{{currentSubtopic}}</h3></div>
-                    <router-link class="col-2" :to="{name: 'Home'}">
-                        <img class="page-logo-sm" src="/images/background/logo_white_small.svg" alt="">
-                    </router-link>
-                </div>
-            </div>
-        </fixed-header>
+  
        <div class="page-bg"></div>
        <div class="page-bg-overlay"></div>
  

@@ -1,11 +1,11 @@
 <template>
   <div class="catalogue">
-    <Header :content="true" logoVariant="logo-page"></Header>
     <Menu :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
     <PageHeader currentSubtopic="Catalogue"></PageHeader>
 
     <div class="cols content-cols">
-      <div class="col-9 mt-4">
+      <div class="col-2"></div>
+      <div class="col-7 mt-4">
         <div class="content-page">
           <h1 class="mb-4">Catalogue</h1>
           <div class="catalogue-header">
@@ -20,7 +20,7 @@
                   <option v-for="option in options" :value="option">{{ option }}</option>
                   </select>
               </div>
-              <button class="btn btn-primary" @click="fullWidth = !fullWidth">Toggle display type</button>
+              <button class="btn" @click="fullWidth = !fullWidth"><i class="fa fa-list-ul"></i></button>
             </div>
           
              <div class="cards">
@@ -100,7 +100,7 @@
               :isExpanded="collapse.states"
               @onToggle="handleToggle('states')"
             >
-              <div slot="header"><h4><b>States</b></h4></div>
+              <div slot="header"><h4><b>Countries</b></h4></div>
               <div class="filters-list">
                   <div @click="topic.selected = !topic.selected" v-for="topic in states" class="filter" :class="{'selected': topic.selected}">
                     <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 

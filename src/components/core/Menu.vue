@@ -3,12 +3,7 @@
     <div style="position:relative;z-index: 1">
       <Header :logoVariant="logoSrc"></Header>
     </div>
-    <div class="app-menu-toolbar">
-      <label class="searchbar">
-        <input v-model="searchText" type="text" value="Search">
-        <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
-      </label>
-    </div>
+
     <transition :name="transition">
       <div id="app-menu-content" :class="[toggleable ? 'absolute' : 'relative']" v-show="menuOpened">
         <div :class="overlayClass" id="menu-underlay"></div>
@@ -22,21 +17,28 @@
             </div>
             </transition>
         <div class="menu">
-          <div class="menu-items">
-            <button v-if="toggleable" @click="onMenuToggle">Close</button>
+        <div style="margin-top:-120px" class="menu-items">
+            <div class="menu-items-header">
+              <img class="" src="/images/background/logo_white_small.svg" alt="">
+              <label class="searchbar">
+                <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" value="Search" v-model="searchText">
+              </label>
+            </div>
             <div 
               class="menu-item"
               :class="{active: activeMenu === key}"
               :key="key"
-              v-if="key !== 'Home'"
               v-for="(menu, key) in menus"
               >
+
               <div v-if="!menu.path">
                 <h2 class="menu-title" @click="onMenuChange(key)">{{ key }}</h2>
               </div>
               <router-link v-else :to="menu.path">
                 <h2 class="menu-title">{{ key }}</h2>
               </router-link>
+             
             </div>
           </div>
 
@@ -227,6 +229,12 @@
           this.customBackground = null
           this.overlayCurrentClass = null
         }
+        if(this.activeMenu == target) {
+          console.log('here')
+          this.activeMenu = null
+          return
+        }
+
         if (this.gridReady) {
           let self = this
           if (this.hasSubMenuItems) {
@@ -393,36 +401,7 @@
       text-decoration: none;
     }
   }
-  .menu-items {
-    width: 33.33%;
-    padding: 0 24px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    .menu-item {
-      position: relative;
-      margin-bottom: 2rem;
-      h2 {
-        font-size: 2.5rem;
-      }
-      color: #fff;
-      &.active {
-        .menu-title {
-          font-weight: 400;
-        }
-      }
-      .menu-title {
-        margin: 0;
-        text-transform: uppercase;
-        text-align: left;
-        font-weight: 100;
-        cursor: pointer;
-        &:hover {
-          font-weight: 400;
-        }
-      }
-    }
-  }
+
   .sub-menu {
     position: relative;
     display: flex;
@@ -485,7 +464,7 @@
     img {
       width: 100%;
       max-height: 100%;
-      padding-left: 241px;
+      padding-left: 300px;
     }
 }
 
@@ -535,20 +514,6 @@
 }
 
 
-.searchbar {
-    margin-top:1rem;
-    font-size: 1.5rem;
-    margin-left: 2rem;
-    i {
-        margin-left: -2.5rem;
-    }
-    input {
-        background: none;
-        border: none;
-        border-bottom: 1px solid white;
-        color: white;
-    }
-}
 .app-menu-toolbar {
     position: absolute;
     width: 30%;

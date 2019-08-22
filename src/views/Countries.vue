@@ -1,13 +1,13 @@
 <template>
   <div class="countries">
-    <Header :content="true" logoVariant="logo-page"></Header>
-    <Menu :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
+    <!-- <Header :content="true" logoVariant="logo-page"></Header> -->
+    <Menu :name="country_data.country" currentPage="Countries" :tabs="tabs" :currentTab="currentTab" :handleClick="handleClick" :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
+    
     <PageHeader :currentSubtopic="country_data.country"></PageHeader>
 
     <div class="cols content-cols">
       <div class="col-3 mt-4">
-        <p>Chose a section for the <b> {{ country_data.country }} </b> subtopic</p>
-        <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
+      
       </div>
       <div class="col-7">
         <div v-if="country_data && actual_data" class="content-page">

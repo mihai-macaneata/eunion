@@ -1,6 +1,6 @@
 <template>
     <div class="page-header">
-    <fixed-header :threshold="250">
+    <!-- <fixed-header :threshold="250">
             <div class="header-navbar">
                 <div class="navbar-body cols">
                     
@@ -11,7 +11,7 @@
                     </router-link>
                 </div>
             </div>
-        </fixed-header>
+        </fixed-header> -->
        <div class="page-bg"></div>
        <div class="page-bg-overlay"></div>
  
