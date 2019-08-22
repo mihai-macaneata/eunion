@@ -345,7 +345,15 @@ import Tabs from 'vue-tabs-with-active-line'
           }
         }
       }
-    }
+    },
+    watch:{
+      $route (to, from){
+        this.activeMenu = null
+        this.activeSubMenuId = 0
+        this.activeSubTopicId = 0
+        this.activeCountryId = 0
+      }
+    } 
   }
 </script>
 
