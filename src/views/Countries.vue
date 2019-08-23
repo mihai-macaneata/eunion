@@ -1,5 +1,5 @@
 <template>
-  <div class="countries">
+  <div id="top" class="countries">
     <!-- <Header :content="true" logoVariant="logo-page"></Header> -->
     <Menu :name="country_data.country" currentPage="Countries" :tabs="tabs" :currentTab="currentTab" :handleClick="handleClick" :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
     
@@ -9,7 +9,7 @@
       <div class="col-3 mt-4">
       
       </div>
-      <div class="col-7">
+      <div class="col-6">
         <div v-if="country_data && actual_data" class="content-page">
           <h1>{{country_data.country}}</h1>
           <hr>
@@ -45,9 +45,16 @@
           </div>
         </div>
       </div>
-      <div id="minimap-container" class="col-2">
-        <canvas v-if="actual_data" class='minimap' id="minimap2" ref="minimap"></canvas>
-        <canvas v-if="actual_data" class='minimap' id="minimap" ref="minimap"></canvas>
+      <div class="col-3">
+        <div class="headings_navigation" v-if="headings">
+          <h5 class=""><b>In page navigation</b></h5>
+          <ul  class="headings_navigation_list">
+            <li v-for="heading in headings" :key="heading.id">
+              <a v-scroll-to="`#${heading.id}`">{{heading.text}}</a>
+            </li>
+          </ul>
+        </div>
+        <a class="back_to_top" v-scroll-to="'#top'"><i class="fa fa-chevron-up"></i> back to top</a>
       </div>
     </div>
     <Footer></Footer>
@@ -85,45 +92,16 @@ var pagemap = require('pagemap');
         briefing,
         report,
         country: this.$route.query.country, 
-        currentTab: 'main'
+        currentTab: 'main',
+        headings: null
       }
     },
   updated: function () {
-      this.$nextTick(function () {
-        // Code that will run only after the
-        // entire view has been rendered
-
-        setTimeout( () => {
-
-        let minimapEl = document.getElementById('minimap')
-        let clone = document.getElementById('minimap2').cloneNode(true)
-        clone.id = 'minimap'
-        minimapEl.parentNode.removeChild(minimapEl)
-        document.getElementById('minimap-container').appendChild(clone)
-        
-        if(minimapEl != undefined) {
-          let minimapEl = this.$refs.minimap
-          pagemap(document.querySelector('#minimap'));
-        }
-        },500)
-
-      })
+    
     },
     mounted: function () {
       this.$nextTick(function () {
-        // Code that will run only after the
-        // entire view has been rendered
-
-        setTimeout( () => {
-
-        let minimapEl = document.getElementById('minimap')
-        
-        if(minimapEl != undefined) {
-        let minimapEl = this.$refs.minimap
-          pagemap(document.querySelector('#minimap'));
-          }
-        },100)
-
+        this.makeHeadings()
       })
     },
     computed: {
@@ -146,7 +124,19 @@ var pagemap = require('pagemap');
     methods: {
       handleClick(newTab) {
         this.currentTab = newTab;
+        this.$nextTick(function () {
+          this.makeHeadings()
+        })
       },
+      makeHeadings() {
+        this.headings  = Array.from(document.querySelectorAll('.content-page h3')).map((el,index) => {
+          const id = `${this.currentTab}_${index}`
+          el.setAttribute('id', id)
+          const text = el.innerText;
+          console.log(text)
+          return {id, text}
+        })
+      }
     }
   }
 </script>
@@ -174,18 +164,7 @@ var pagemap = require('pagemap');
       border-left: 1px solid #ddd;
     }
   }
-  #minimap2 {
-    display: none;
-  }
-  #minimap, #minimap2 {
-    position: sticky;
-    // top: 250px;
-    top: 470px;
-    right: 100px;
-    min-width: 100px!important;
-    height: 300px;
-    z-index: 100;
-  }
+ 
 
  .content-page * {
     max-width: 100%!important;

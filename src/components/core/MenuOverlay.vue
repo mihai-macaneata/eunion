@@ -1,5 +1,4 @@
 <template>
-  <div id="app-menu-overlay" :class="[menuOpened ? 'active' : '']">
     <!-- <div class="app-menu-toolbar" v-if="toggleable">
       <i  v-if="menuOpened" @click="onMenuToggle" class="menu-control fa fa-times" aria-hidden="true"></i>
       <i  v-else-if="!menuOpened" @click="onMenuToggle" class="menu-control fa fa-bars" aria-hidden="true"></i>
@@ -102,7 +101,6 @@
         </transition>
       </div>
     </transition>
-  </div>
 </template>
 
 <script>
@@ -362,15 +360,15 @@ import Tabs from 'vue-tabs-with-active-line'
 
 
 
-#app-menu-overlay,
-#app-menu-content {
-  font-family: 'Roboto Condensed', sans-serif;
-  width: 100%;
-  height: 100%;
-  min-height: max-content;
-  font-weight: 100;
-  color: white;
-}
+// #app-menu-overlay,
+// #app-menu-content {
+//   font-family: 'Roboto Condensed', sans-serif;
+//   width: 100%;
+//   height: 100%;
+//   min-height: max-content;
+//   font-weight: 100;
+//   color: white;
+// }
 
 #app-menu-overlay {
     position: fixed;

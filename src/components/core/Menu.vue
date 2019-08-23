@@ -351,14 +351,7 @@
 </script>
 
 <style lang="scss" scoped>
-#app-menu,
-#app-menu-content {
-  font-family: 'Roboto Condensed', sans-serif;
-  width: 100%;
-  height: 100%;
-  min-height: max-content;
-  font-weight: 100;
-}
+
 
 #menu-background,
 #menu-background-overlay,
