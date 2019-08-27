@@ -19,8 +19,8 @@ body {
   max-height: 320px;
     overflow: auto;
   .muted {
-    color: #aaa;
-    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
     text-transform: uppercase;
 
     padding: .2rem .2rem;
@@ -37,7 +37,6 @@ nav.tabs {
         font-size: 1rem;
         display: block;
         border: none;
-        border-radius: 3px;
         padding: .5rem 1rem;
         font-weight: 200;
         text-align: left;
@@ -45,8 +44,8 @@ nav.tabs {
         outline: none;
         &.tabs__item_active {
             font-weight: bold;
-        background: #eee;
           display: flex;
+          border: 1px solid #eee;
           justify-content: space-between;
             position: relative;
             z-index: 1;
@@ -114,24 +113,35 @@ nav.tabs {
       width: 249px;
       position: absolute;
       z-index: 1;
-      border-radius: 6px;
-      margin-left: 2rem;
+      // border-radius: 6px;
+      margin-left: 2.5rem;
       padding: 1rem;
-      background: #272727;
+      // background: #272727;
       // height: 300px;
-      box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5);
       display: inline-block;
       .menu-item {
         position: relative;
         h2.menu-title {
-          font-size: 1.3rem!important;
-          margin-bottom: 1.5rem;
+          font-size: 2rem!important;
+          margin-bottom: 2.5rem;
         }
         color: #fff;
         &.active {
           .menu-title {
             font-weight: 400;
           }
+          &:before {
+            content: ">";
+            font-family: Roboto;
+            font-size: 2rem;
+            font-weight: 100;
+            line-height: 0;
+            position: absolute;
+            left: calc(100% + 15px);
+            top:50%;
+            transform:translateY(-50%);
+            transition: all 200ms;
+        }
         }
         .menu-title {
           text-transform: uppercase;
@@ -154,6 +164,10 @@ nav.tabs {
       padding-left: 40%;
       width: 66.66%;
       background: linear-gradient(to right, rgba(29, 40, 39, 0.69) 1%, #008675 80%, #008675 100%);
+      &.columns-2 {
+        background: linear-gradient(to right, rgba(29, 40, 39, 0.69) 1%, #004B87 80%, #004B87 100%);
+
+      }
     }
 
     // .sub-menu {
@@ -312,12 +326,10 @@ button {
 
 
 .menu-items-header {
-  background: rgba(31, 105, 182, 0.85);
+  background: #008675;
   margin-left: -1rem;
   margin-right: -1rem;
   margin-top: -1rem;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -368,14 +380,12 @@ button {
 
 
 .headings_navigation {
-
-  border-radius: 6px;
   /* margin-left: 2rem; */
   padding: 1rem;
-  background: rgba(31, 105, 182, 0.85);
+  background: #eee;
+  color: #444;
   margin-top: 2rem;
-  color: white;
- 
+  font-weight: 400;
 
   .headings_navigation_list {
     padding-left: 0;
@@ -408,5 +418,33 @@ button {
   cursor: pointer;
   &:hover {
     color: #007bff!important;
+  }
+}
+
+
+#app > div:not(.home) {
+  #app-menu-content {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+  .menu {
+    width: 100%;
+    .menu-items {
+      position: sticky;
+      top:0;
+      width: 100%;
+      h2.menu-title {
+        color: #444;
+        // font-size: 1.3rem!important;
+        // margin-bottom: 1rem;
+      }
+    }
+    .sub-menu {
+      position: fixed;
+      height: 100%;
+      padding-top: 1rem;
+      margin-top: 0;
+    }
   }
 }

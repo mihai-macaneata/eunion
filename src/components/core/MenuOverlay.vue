@@ -13,13 +13,13 @@
         <!-- <div :class="overlayClass" id="menu-background-overlay"></div> -->
         <div class="menu">
           <div class="menu-items">
-            <div class="menu-items-header">
+            <!-- <div class="menu-items-header">
               <img class="" src="/images/background/logo_white_small.svg" alt="">
               <label class="searchbar">
                 <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
                 <input type="text" value="Search" v-model="searchText">
               </label>
-            </div>
+            </div> -->
             <div 
               class="menu-item"
               :class="{active: activeMenu === key}"
@@ -33,10 +33,10 @@
               <router-link v-else :to="menu.path">
                 <h2 class="menu-title">{{ key }}</h2>
               </router-link>
-               <div v-if="currentPage === key" class="menuTabs">
+               <!-- <div v-if="currentPage === key" class="menuTabs">
                 <div class="muted">{{name}}</div>
                 <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
-              </div>
+              </div> -->
             </div>
           </div>
 

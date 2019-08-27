@@ -17,14 +17,14 @@
             </div>
             </transition>
         <div class="menu">
-        <div style="margin-top:-120px" class="menu-items">
-            <div class="menu-items-header">
+        <div class="menu-items">
+            <!-- <div class="menu-items-header">
               <img class="" src="/images/background/logo_white_small.svg" alt="">
               <label class="searchbar">
                 <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
                 <input type="text" value="Search" v-model="searchText">
               </label>
-            </div>
+            </div> -->
             <div 
               class="menu-item"
               :class="{active: activeMenu === key}"

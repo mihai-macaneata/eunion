@@ -11,5 +11,5 @@ export default {
     "Topics": topics,
     "Countries": countries,
     "Catalogue": {},
-    // "About": {}
+    "About": {}
 }

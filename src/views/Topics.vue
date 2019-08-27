@@ -1,10 +1,11 @@
 <template>
   <div id="top" class="topics">
-    <Menu :name="subtopic_data.name" currentPage="Topics" :tabs="tabs" :currentTab="currentTab" :handleClick="handleClick" :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
     <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
 
     <div class="cols content-cols">
-     <div class="col-3"></div>
+     <div class="col-3">
+        <Menu :name="subtopic_data.name" currentPage="Topics" :tabs="tabs" :currentTab="currentTab" :handleClick="handleClick" :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
+     </div>
       <div class="col-6">
         <div v-if="topic_data && subtopic_data" class="content-page">
           <h1>{{subtopic_data.name}}</h1>
