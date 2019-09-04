@@ -1,17 +1,17 @@
 <template>
     <div class="page-header">
-    <!-- <fixed-header :threshold="250">
+    <fixed-header :threshold="250">
             <div class="header-navbar">
                 <div class="navbar-body cols">
                     
-                    <div class="col-3"></div>
-                    <div class="col-7" style="padding: .8rem 2.5rem;"><h3 class="thin">{{currentSubtopic}}</h3></div>
-                    <router-link class="col-2" :to="{name: 'Home'}">
+                    <router-link class="col-3" :to="{name: 'Home'}">
                         <img class="page-logo-sm" src="/images/background/logo_white_small.svg" alt="">
                     </router-link>
+                    <div class="col-6" style="padding: .8rem 2.5rem;"><h3 class="thin">{{currentSubtopic}}</h3></div>
+                    <div class="col-3"></div>
                 </div>
             </div>
-        </fixed-header> -->
+        </fixed-header>
        <div class="page-bg"></div>
        <div class="page-bg-overlay"></div>
  
@@ -61,7 +61,7 @@ export default {
     }
     .page-header {
         width: 100%;
-        height: 250px;
+        height: 300px;
         position: relative;
         // position: absolute;
     }
@@ -78,7 +78,7 @@ export default {
 
     .page-bg-overlay {
         // background: #008675;
-        background: rgba(0,0,0, 0.35);
+        background: rgba(0,0,0, 0.45);
     }
     h1 {
         font-weight: bold;
@@ -87,6 +87,8 @@ export default {
         width: 350px;
         top: -10px;
         right: 2rem;
+        left: 0;
+        width: 100%;
     }
     }
 

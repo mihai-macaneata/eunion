@@ -28,15 +28,12 @@
               >
 
               <div v-if="!menu.path">
-                <h2 class="menu-title" @click="onMenuChange(key)">{{ key }}</h2>
+                <h2 class="menu-title" :class="{white: activeMenu}" @click="onMenuChange(key)">{{ key }}</h2>
               </div>
               <router-link v-else :to="menu.path">
-                <h2 class="menu-title">{{ key }}</h2>
+                <h2 class="menu-title" :class="{white: activeMenu}">{{ key }}</h2>
               </router-link>
-               <!-- <div v-if="currentPage === key" class="menuTabs">
-                <div class="muted">{{name}}</div>
-                <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
-              </div> -->
+             
             </div>
           </div>
 
@@ -78,18 +75,18 @@
         <transition :name="transition">
           <div class="content" v-if="content">
           <h3 class="mb-3">{{content.name || content.country}}</h3>
-            <div class="description">
+            <!-- <div class="description">
               <p v-for="(description, key) in content.description" :key="key"> {{ description }}</p>
-            </div>
+            </div> -->
             <h4>Introduction</h4>
             <div class="introduction">
               <p v-for="(intro, key) in content.introduction" :key="key"> {{ intro }}</p>
             </div>
             <router-link v-if="content.country" class="more" :to="{name: 'Countries', query: {country: content.id}}">
-              <h3>More about <b>{{content.country}}</b></h3>
+              <h4>More about <b>{{content.country}}</b></h4>
             </router-link>
             <router-link v-else class="more" :to="{name: 'Topics', query: {subtopic: content.id, topic: activeSubMenuId}}">
-              <h3>More about <b>{{content.name}}</b></h3>
+              <h4>More about <b>{{content.name}}</b></h4>
             </router-link>
           </div>
         </transition>

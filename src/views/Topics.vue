@@ -1,13 +1,17 @@
 <template>
   <div id="top" class="topics">
-    <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
+    <Header :content="true" logoVariant="logo-page"></Header>
 
+    <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
     <div class="cols content-cols">
      <div class="col-3">
         <Menu :name="subtopic_data.name" currentPage="Topics" :tabs="tabs" :currentTab="currentTab" :handleClick="handleClick" :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
      </div>
       <div class="col-6">
+
         <div v-if="topic_data && subtopic_data" class="content-page">
+          <Tabs :tabs="tabs" :currentTab="currentTab" @onClick="handleClick"></Tabs>
+
           <h1>{{subtopic_data.name}}</h1>
           <hr>
           <div v-if="currentTab === 'main'" id="main">
