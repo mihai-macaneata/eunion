@@ -10,6 +10,10 @@ export default {
     },
     "Topics": topics,
     "Countries": countries,
-    "Catalogue": {},
-    "About": {}
+    "Catalogue": {
+        path: '/catalogue'
+    },
+    "About": {
+        path: '/about'
+    }
 }

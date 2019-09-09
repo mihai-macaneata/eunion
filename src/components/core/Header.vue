@@ -2,8 +2,11 @@
     <div>
         <div class="header" v-if="!content">
             <!-- <img id="searchImg" src="/images/background/search.svg" alt=""> -->
-            <div></div>
             <img style="width: 550px" :src="`/images/background/${logoSrc}.svg`" alt="logo">
+             <label class="searchbar">
+                    <input type="text" value="Search" v-model="searchText">
+                    <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
+                </label>
         </div>
         <div class="header" v-else>
                 <router-link style="z-index: 1; margin-left: 1rem;" :to="{name: 'Home'}">
@@ -59,6 +62,7 @@ export default {
     }
     .page-logo {
         width: 750px;
+        margin-top: 2rem;
     }
 }
 

@@ -8,7 +8,13 @@
                         <img class="page-logo-sm" src="/images/background/logo_white_small.svg" alt="">
                     </router-link>
                     <div class="col-6" style="padding: .8rem 2.5rem;"><h3 class="thin">{{currentSubtopic}}</h3></div>
-                    <div class="col-3"></div>
+                    <div class="col-3">
+
+                        <label class="searchbar" style="margin: 0; margin-top: 1rem">
+                            <input type="text" value="Search" v-model="searchText">
+                            <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
+                        </label>
+                    </div>
                 </div>
             </div>
         </fixed-header>
@@ -46,7 +52,8 @@ export default {
         left: 0;
         top: 0;
         width: 100vw;
-        background: #008675;
+        // background: #008675;
+        background-image: url(/images/background/topic-bg.jpg);
         color: white;
     }
     .header-navbar.vue-fixed-header--isFixed {
@@ -54,8 +61,11 @@ export default {
         left: 0;
         top: 0;
         width: 100vw;
-        background: #008675;
-
+            background-image: url(/images/background/topic-bg.jpg);
+  background-size: cover;
+        .navbar-body {
+        background: rgba(0,0,0,0.5);
+        }
         color: white;
         z-index: 100;
     }

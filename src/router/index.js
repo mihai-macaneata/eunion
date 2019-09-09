@@ -4,6 +4,8 @@ const Menu = () => import(/* webpackChunkName: "menu" */ '@/views/Home')
 const Countries = () => import(/* webpackChunkName: "countries" */ '@/views/Countries')
 const Catalogue = () => import(/* webpackChunkName: "catalogue" */ '@/views/Catalogue')
 const Topics = () => import(/* webpackChunkName: "topics" */ '@/views/Topics')
+const About = () => import(/* webpackChunkName: "topics" */ '@/views/About')
+
 
 // Routes
 import paths from './paths'
@@ -29,7 +31,12 @@ const routes = [{
     path: '/catalogue',
     name: 'Catalogue',
     component: Catalogue
-  }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
 ]
 // Create a new router
 

@@ -5,7 +5,7 @@
       
     </div> -->
     <transition :name="transition">
-      <div id="app-menu-content" v-show="menuOpened">
+      <div id="app-menu-content" v-show="menuOpened" :class="{opened: activeMenu}" style="z-index: 101;">
     <!-- <Header :logoVariant="logoSrc"></Header> -->
 
         <!-- <div :class="overlayClass" id="menu-underlay"></div> -->
@@ -28,10 +28,27 @@
               >
 
               <div v-if="!menu.path">
-                <h2 class="menu-title" :class="{white: activeMenu}" @click="onMenuChange(key)">{{ key }}</h2>
+                <h2 class="menu-title" :class="{white: activeMenu}" @click="onMenuChange(key)">
+                  {{ key }}
+                </h2>
+                <div class="menuExpaneded" v-if="key === 'Topics' && $route.name === 'Topics'">
+                  <ul>
+                  <h5>
+                    {{Object.values(menu).map(m => ({name: m.name, id: m.id})).filter(i => i.id == $route.query.topic).map(m => m.name)[0]}}
+                  </h5>
+                    <li v-for="subtopic in subTopicsInMenu" :class="{active: subtopic.id == $route.query.subtopic}">
+                      <router-link :to="{name: 'Topics', query: {subtopic: subtopic.id, topic:  $route.query.topic}}">
+                        {{subtopic.name}}
+                      </router-link>
+                    </li>
+                  </ul>
+                </div>
+
               </div>
               <router-link v-else :to="menu.path">
-                <h2 class="menu-title" :class="{white: activeMenu}">{{ key }}</h2>
+                <h2 class="menu-title" :class="{white: activeMenu}">
+                  {{ key }}
+                </h2>
               </router-link>
              
             </div>
@@ -42,7 +59,12 @@
               class="sub-menu"
               :class="[gridClass]"
               v-if="hasSubMenuItems && gridReady">
-              <div class="sub-menu-item" v-for="(item, key) in subMenuItems" :key="key">
+              <div 
+                class="sub-menu-item" 
+                v-for="(item, key) in subMenuItems" 
+                :key="key"
+                :class="{country: item.country}"
+              >
                 <h4
                   class="sub-menu-title"
                   :class="{active: activeSubMenuId === item.id}"
@@ -51,7 +73,11 @@
                 <h4
                   class="sub-menu-title" 
                   v-else-if="item.country" 
-                  @click="onCountryChange(item.id)">{{ item.country }}</h4>
+                 >
+                    <router-link :to="{name: 'Countries', query: {country: item.id}}">
+                      {{item.country}}
+                    </router-link>
+                 </h4>
               </div>
             </div>
           </transition>
@@ -66,7 +92,10 @@
                 <div class="sub-topic-item" v-for="(item, key) in subTopics" :key="key">
                   <h5
                     :class="{active: activeSubTopicId === item.id}"
-                    class="sub-topic-title" @click="onSubTopicChange(item.id)">{{ item.name }}
+                    class="sub-topic-title">
+                    <router-link :to="{name: 'Topics', query: {subtopic: item.id, topic: activeSubMenuId}}">
+                      {{item.name}}
+                    </router-link>
                   </h5>
                 </div>
             </div>
@@ -92,9 +121,9 @@
         </transition>
         
         <transition :name="transition">
-          <div class="catalogue-menu" v-if="activeMenu === 'Catalogue'">
+          <!-- <div class="catalogue-menu" v-if="activeMenu === 'Catalogue'">
             <cat-menu menu="true"></cat-menu>
-          </div>
+          </div> -->
         </transition>
       </div>
     </transition>
@@ -104,7 +133,7 @@
   import resources from '@/assets/data/menu'
   import CatalogueMenu from '@/views/CatalogueMenu'
   import Header from '@/components/core/Header'
-import Tabs from 'vue-tabs-with-active-line'
+// import Tabs from 'vue-tabs-with-active-line'
 
   export default {
     data() {
@@ -136,16 +165,20 @@ import Tabs from 'vue-tabs-with-active-line'
         default: 'fade'
       },
       currentPage: String,
-      tabs: Array,
+      // tabs: Array,
       currentTab: String,
       handleClick: Function,
       name: String
     },
     components: {
       Header, 'cat-menu': CatalogueMenu,
-      Tabs
     },
     computed: {
+
+      subTopicsInMenu() {
+        const menu = Object.values(this.menus.Topics).map(m => ({name: m.name, id: m.id, subtopics: m.subtopics})).filter(i => i.id == this.$route.query.topic)[0]['subtopics'].map(s => ({id: s.id, name: s.name}))
+        return menu
+      },
       backgroundClass() {
         if (!this.customBackground) {
           return 'background-' + this.background 
@@ -462,6 +495,9 @@ import Tabs from 'vue-tabs-with-active-line'
       cursor: pointer;
       .sub-topic-title {
         font-weight: 100;
+        a {
+          color: #444;
+        }
         &:hover {
           font-weight: 400;
         }

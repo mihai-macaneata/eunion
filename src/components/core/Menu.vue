@@ -56,7 +56,11 @@
                 <h4 
                   class="sub-menu-title" 
                   v-else-if="item.country" 
-                  @click="onCountryChange(item.id)">{{ item.country }}</h4>
+                  >
+                  <router-link :to="{name: 'Countries', query: {country: item.id}}">
+                      {{item.country}}
+                    </router-link>
+                  </h4>
               </div>
             </div>
           </transition>
@@ -71,7 +75,10 @@
                 <div class="sub-topic-item" v-for="(item, key) in subTopics" :key="key">
                   <h5
                     :class="{active: activeSubTopicId === item.id}"
-                    class="sub-topic-title" @click="onSubTopicChange(item.id)">{{ item.name }}
+                    class="sub-topic-title">
+                    <router-link :to="{name: 'Topics', query: {subtopic: item.id, topic: activeSubMenuId}}">
+                      {{item.name}}
+                    </router-link>
                   </h5>
             </div>
             </div>
@@ -437,6 +444,9 @@
       cursor: pointer;
       .sub-topic-title {
         font-weight: 100;
+        a {
+          color: #444;
+        }
         &:hover {
           font-weight: 400;
         }
@@ -446,6 +456,7 @@
 }
 
 .floating-chart {
+  display: none;
     position: absolute;
     right: 0;
     width: 100%;

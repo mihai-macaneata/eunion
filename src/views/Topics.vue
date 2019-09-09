@@ -5,7 +5,7 @@
     <PageHeader :currentSubtopic="subtopic_data.name"></PageHeader>
     <div class="cols content-cols">
      <div class="col-3">
-        <Menu :name="subtopic_data.name" currentPage="Topics" :tabs="tabs" :currentTab="currentTab" :handleClick="handleClick" :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
+        <Menu :name="subtopic_data.name" currentPage="Topics" :currentTab="currentTab" :handleClick="handleClick" :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
      </div>
       <div class="col-6">
 
@@ -113,7 +113,7 @@ var pagemap = require('pagemap');
           const id = `${this.currentTab}_${index}`
           el.setAttribute('id', id)
           const text = el.innerText;
-          console.log(text)
+          // console.log(text)
           return {id, text}
         })
       }
