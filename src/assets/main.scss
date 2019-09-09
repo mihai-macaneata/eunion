@@ -539,3 +539,58 @@ button {
     background: none;
   }
 }
+
+.catalogue-header {
+  // margin-top: -14rem;
+  //   margin-bottom: 5rem;
+  margin-top: -2rem;
+  margin-bottom: 2rem;
+}
+
+.catalogue .content-page {
+  margin-top:0!important;
+}
+
+.card-bottom {
+  margin-top: .5rem;
+
+  flex-wrap: wrap;
+  small {
+    font-size: .8rem;
+    margin-bottom: .5rem;
+  }
+  .muted {
+    color: #aaa;
+    margin-right: 3px;
+  }
+}
+
+.collapsible-panel__arrow {
+  position: absolute;
+  right: 30px;
+}
+
+.catalogue-filters {
+  border: 1px solid #eee;
+}
+
+.collapsible-panel__header {
+margin-left: -2rem;
+margin-right: -2rem;
+padding: 0 2rem;
+border-bottom: none;
+border-top: 1px solid #eee;
+}
+
+
+.catalogue-controls {
+  .button-group {
+    button:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    .primary {
+      background: #eee;
+    }
+  }
+}

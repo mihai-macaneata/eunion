@@ -1,26 +1,38 @@
 <template>
   <div class="catalogue">
-    <Menu :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
+    <Header :content="true" logoVariant="logo-page"></Header>
+
     <PageHeader currentSubtopic="Catalogue"></PageHeader>
 
     <div class="cols content-cols">
-      <div class="col-2"></div>
+      <div class="col-2">
+        <Menu :toggleable="true" :background="'teal'" :transition="'slide-fade'"></Menu>
+
+      </div>
       <div class="col-7 mt-4">
         <div class="content-page">
-          <h1 class="mb-4">Catalogue</h1>
           <div class="catalogue-header">
-            <input type="text" v-model="searchText" placeholder="Search">
+            <!-- <h1 class="mb-4" style="color:white;">Search</h1> -->
+            <div style="position: relative">
+
+            <input type="text" v-model="searchText" placeholder="eg: Renewable energy">
             <i @click="shuffleEverything" class="fa fa-search" aria-hidden="true"></i>
+            </div>
           </div>
           <div class="catalogue-body" :class="{'full-width': fullWidth}">
             <div class="catalogue-controls mb-4">
+              <div class="button-group">
+
+              <button class="btn" :class="{primary: fullWidth}" @click="fullWidth = !fullWidth"><i class="fa fa-list-ul"></i></button>
+              <button class="btn"  :class="{primary: !fullWidth}" @click="fullWidth = !fullWidth"><i class="fa fa fa-th-large"></i></button>
+              </div>
               <div>
-                <label for="">Per page:</label> &nbsp;
+                <small class="muted">Search produced 38 results | </small>
+                <label for=""><small>results per page:</small></label> &nbsp;
                   <select v-model="perPage">
                   <option v-for="option in options" :value="option">{{ option }}</option>
                   </select>
               </div>
-              <button class="btn" @click="fullWidth = !fullWidth"><i class="fa fa-list-ul"></i></button>
             </div>
           
              <div class="cards">
@@ -32,29 +44,32 @@
                  </div>
                   <div v-if="!fullWidth" class="card-title">
                     {{titles[card]}}
-                    <div class="created"> {{getRandomDate(435,24,2)}}</div>
+                    <div class="created"></div>
                   </div>
                 </a>
                   <div class="card-detail with-content">
                     <h5 v-if="fullWidth" class="card-title mb-2" style="padding:0">
                       {{titles[card]}}
-                      <div class="created"> {{getRandomDate(2,8,2)}}</div>
                     </h5>
-                      {{ content[card] }}
+                      {{ content[card].substring(0,300)}}
                       <div class="mt-2" v-if="fullWidth">
                         <p>
-                          {{ content[card+1]}}
+                          {{ content[card+1].substring(0,100)+".." }}
                         </p>
-                        <p>
-                          {{ content[card+2]}}
-                        </p>
+                  
+                      </div>
+                      <div class="card-bottom" style="display: flex;">
+                        <small><span class="muted">Content type:</span> Data</small> 
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <small><span class="muted">Topic:</span> Energy efficiency</small> 
+                     &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <small><span class="muted">Date:</span> {{getRandomDate(2,8,2)}}</small>
                       </div>
                 </div> 
-                <div class="card-detail" :class="{'floating': fullWidth}">
-                  <div class="card-detail-right">
-                    <div class="badge">{{ type[card]}}</div>
-                  </div>
-                </div>
                </div>
 
              </div>
@@ -63,9 +78,34 @@
       </div>
       <div class="col-3 mt-4">
         <div class="content-page catalogue-filters">
-          <h3><b>Filter results</b></h3>
+          <h5 style="color: #aaa"><b>FILTERS</b></h5>
 
 
+
+  <div class="collapsible-wrapper">
+
+      <CollapsiblePanel
+        class="accordion-item"
+        :isExpanded="collapse.type"
+        @onToggle="handleToggle('type')"
+      >
+          <div slot="header"><b>Content Types</b></div>
+             <div class="filters-list">
+                  <div @click="topic.selected = !topic.selected" v-for="topic in types" class="filter" :class="{'selected': topic.selected}">
+                    <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 
+                    <i v-if="topic.selected" class="fa fa-check"></i>
+                    {{topic.name}}
+                  </div>
+              </div>
+        </CollapsiblePanel>
+        <div class="filters-list">
+              <div v-if="!collapse.type" @click="topic.selected = !topic.selected" v-for="topic in types.filter(t => t.selected)" class="filter" :class="{'selected': topic.selected}">
+                <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 
+                <i v-if="topic.selected" class="fa fa-check"></i>
+                {{topic.name}}
+              </div>
+          </div>
+  </div>
 
   <div class="collapsible-wrapper">
 
@@ -74,11 +114,11 @@
             :isExpanded="collapse.topics"
             @onToggle="handleToggle('topics')"
         >
-          <div slot="header"><h4><b> Topics</b> </h4></div>
+          <div slot="header"><b> Topics</b></div>
           <div class="filters-list">
               <div @click="topic.selected = !topic.selected" v-for="topic in topics" class="filter" :class="{'selected': topic.selected}">
                 <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 
-                <i v-if="topic.selected" class="fa fa-times"></i>
+                <i v-if="topic.selected" class="fa fa-check"></i>
                 {{topic.name}}
               </div>
           </div>
@@ -86,13 +126,13 @@
           <div class="filters-list">
               <div v-if="!collapse.topics" @click="topic.selected = !topic.selected" v-for="topic in topics.filter(t => t.selected)" class="filter" :class="{'selected': topic.selected}">
                 <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 
-                <i v-if="topic.selected" class="fa fa-times"></i>
+                <i v-if="topic.selected" class="fa fa-check"></i>
                 {{topic.name}}
               </div>
           </div>
   </div>
 
-  <div class="collapsible-wrapper">
+  <!-- <div class="collapsible-wrapper">
 
 
       <CollapsiblePanel
@@ -104,7 +144,7 @@
               <div class="filters-list">
                   <div @click="topic.selected = !topic.selected" v-for="topic in states" class="filter" :class="{'selected': topic.selected}">
                     <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 
-                    <i v-if="topic.selected" class="fa fa-times"></i>
+                    <i v-if="topic.selected" class="fa fa-check"></i>
                     {{topic.name}}
                   </div>
               </div>
@@ -112,35 +152,12 @@
           <div class="filters-list">
               <div v-if="!collapse.states" @click="topic.selected = !topic.selected" v-for="topic in states.filter(t => t.selected)" class="filter" :class="{'selected': topic.selected}">
                 <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 
-                <i v-if="topic.selected" class="fa fa-times"></i>
+                <i v-if="topic.selected" class="fa fa-check"></i>
                 {{topic.name}}
               </div>
           </div>
-  </div>
-  <div class="collapsible-wrapper">
+  </div> -->
 
-      <CollapsiblePanel
-        class="accordion-item"
-        :isExpanded="collapse.type"
-        @onToggle="handleToggle('type')"
-      >
-          <div slot="header"><h4><b>Types</b></h4></div>
-             <div class="filters-list">
-                  <div @click="topic.selected = !topic.selected" v-for="topic in types" class="filter" :class="{'selected': topic.selected}">
-                    <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 
-                    <i v-if="topic.selected" class="fa fa-times"></i>
-                    {{topic.name}}
-                  </div>
-              </div>
-        </CollapsiblePanel>
-        <div class="filters-list">
-              <div v-if="!collapse.type" @click="topic.selected = !topic.selected" v-for="topic in types.filter(t => t.selected)" class="filter" :class="{'selected': topic.selected}">
-                <i v-if="!topic.selected" class="fa fa-dot-circle"></i> 
-                <i v-if="topic.selected" class="fa fa-times"></i>
-                {{topic.name}}
-              </div>
-          </div>
-  </div>
         </div>
       </div>
   
@@ -185,7 +202,7 @@ var pagemap = require('pagemap');
         },
         topics: topics.map(t => ({name: t.name, selected: false})),
         states: countries.map(t => ({name: t.country, selected: false})),
-        types:   ['Data reults page (interactive data)', 'Topic page', 'Country page', 'Assesments result page'].map(t => ({name: t, selected: false})),
+        types:   ['Data', 'Indicators', 'Briefings', 'Reports'].map(t => ({name: t, selected: false})),
         imageList: [],
         perPage: 9,
         fullWidth: true,
@@ -326,10 +343,11 @@ var pagemap = require('pagemap');
       cursor: pointer;
       transition: all 200ms;
       &.selected{
-        border-color: red;
+        // border-color: red;
+        background: #f9f9f9;
         border-radius: 6px;
         i {
-          color: red;
+          color: green;
         }
       }
       &:hover {
@@ -362,13 +380,13 @@ var pagemap = require('pagemap');
       width: 100%;
     font-size: 1.5rem;
     padding: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
+    border-bottom-color: #eee;
     }
   }
 
   .catalogue-body {
     padding: 1rem;
-    border: 1px solid #ddd;
     margin-top: -1px;
   }
   .cols {
@@ -435,16 +453,16 @@ var pagemap = require('pagemap');
   }
   .card{
     overflow:hidden;
-    border-radius: 4px;
     display:flex;
+    border: none;
     flex-direction: column;
-    box-shadow: 0 2px 20px 0 rgba(0,0,0,0.05);
+    border-radius: 0;
     height: 100%;
         justify-content: space-between;
     transition: box-shadow .3s ease-out, transform .3s ease-out, opacity .2s ease-out;
     &:hover{
-      transform: translate(0, -4px);
-      box-shadow: rgba(45,45,45,0.05) 0px 2px 2px, rgba(49,49,49,0.05) 0px 4px 4px, rgba(42,42,42,0.05) 0px 8px 8px, rgba(32,32,32,0.05) 0px 16px 16px, rgba(49,49,49,0.05) 0px 32px 32px, rgba(35,35,35,0.05) 0px 64px 64px;
+      // transform: translate(0, -4px);
+      // box-shadow: rgba(45,45,45,0.05) 0px 2px 2px, rgba(49,49,49,0.05) 0px 4px 4px, rgba(42,42,42,0.05) 0px 8px 8px, rgba(32,32,32,0.05) 0px 16px 16px, rgba(49,49,49,0.05) 0px 32px 32px, rgba(35,35,35,0.05) 0px 64px 64px;
     }
     &-image{
     overflow: hidden;
@@ -457,8 +475,8 @@ var pagemap = require('pagemap');
         width: 100%;
         height:100%;
             top: -50%;
-    position: absolute;
-    transform: translateY(50%);
+          position: absolute;
+          transform: translateY(50%);
       }
     }
     &-title{
@@ -507,7 +525,7 @@ var pagemap = require('pagemap');
           color: #778D99;
         }
       }
-      border-top: 1px solid #EAF1F6;
+      // border-top: 1px solid #EAF1F6;
       padding:.5rem;      
     }
   }
@@ -532,11 +550,12 @@ var pagemap = require('pagemap');
           flex: 1 auto;
           margin-left: .5rem;
           margin-right: .5rem;
+              padding-top: 0;
         }
             flex-direction: row;
             .card-image {
-                  width: 250px;
-                  height: 100%;
+                  width: 150px;
+                  height: 150px;
             }
       }
   }
@@ -603,5 +622,21 @@ var pagemap = require('pagemap');
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.catalogue-body:not(.full-width) {
+  .card-title,
+  .card-detail {
+    padding-left: 90px;
+    padding-top: 0;
+  }
+
+  .card-image {
+    position: absolute;
+    top: 5px;
+    width: 80px;
+    height: 80px;
+  }
 }
 </style>
