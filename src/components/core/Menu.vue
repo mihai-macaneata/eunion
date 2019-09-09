@@ -10,12 +10,16 @@
         <div id="menu-background" :class="backgroundClass"></div>
         <div :class="overlayClass" id="menu-background-overlay"></div>
         
-          <transition :name="transition">
+        <transition :name="transition">
             <div v-if="!activeMenu" class="floating-chart">
-              <!-- <h1><b>Welcome</b></h1> -->
-              <img src="/images/background/infographic.svg">
+              <h1><b>Welcome</b></h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quisquam vero odio reiciendis et id placeat beatae incidunt, doloremque, deleniti veniam alias. Debitis, deserunt! Ad totam delectus molestias sed? Nesciunt?
+              </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quisquam vero odio reiciendis et id placeat beatae incidunt, doloremque, deleniti veniam alias. Debitis, deserunt! Ad totam delectus molestias sed? Nesciunt?
+              </p>
+              <!-- <img src="/images/background/infographic.svg"> -->
             </div>
-            </transition>
+        </transition>
         <div class="menu">
         <div class="menu-items">
             <!-- <div class="menu-items-header">
@@ -84,31 +88,20 @@
             </div>
           </transition>
         </div>
-        <transition :name="transition">
-          <div class="content" v-if="content">
-          <h3 class="mb-3">{{content.name || content.country}}</h3>
+        <!-- <transition :name="transition">
+          <div class="content">
+          <h3 class="mb-3">Welcome</h3>
             <div class="description">
-              <p v-for="(description, key) in content.description" :key="key"> {{ description }}</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi optio eveniet distinctio non ullam fugiat incidunt libero dolores. Vitae molestiae tempora odio labore reprehenderit et modi nisi dolore voluptatem molestias!
+              </p>
             </div>
             <h4>Introduction</h4>
             <div class="introduction">
-              <p v-for="(intro, key) in content.introduction" :key="key"> {{ intro }}</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt cumque quaerat reiciendis animi aut ab et dignissimos pariatur, impedit nihil dolore iure, quas laboriosam. Accusamus, possimus ut. Excepturi, porro vero.</p>
             </div>
-            <router-link v-if="content.country" class="more" :to="{name: 'Countries', query: {country: content.id}}">
-              <h3>More about <b>{{content.country}}</b></h3>
-            </router-link>
-            <router-link v-else class="more" :to="{name: 'Topics', query: {subtopic: content.id, topic: activeSubMenuId}}">
-              <h3>More about <b>{{content.name}}</b></h3>
-            </router-link>
           </div>
-        </transition>
-
-
-        <transition :name="transition">
-          <div class="catalogue-menu" v-if="activeMenu === 'Catalogue'">
-            <CatalogueMenu></CatalogueMenu>
-          </div>
-        </transition>
+        </transition> -->
       </div>
     </transition>
   </div>
@@ -222,12 +215,7 @@
       // })
     },
     methods: {
-      goToCatalogue() {
-        this.$router.push({
-          name: 'Catalogue',
-          query: {searchTerm: this.searchText}
-        })
-      },
+   
       onMenuChange(target) {
         if(target === 'Countries') {
           this.customBackground = 'countries'
@@ -456,13 +444,14 @@
 }
 
 .floating-chart {
-  display: none;
+  // display: none;
     position: absolute;
-    right: 0;
-    width: 100%;
+    left: 33%;
+    width: 66%;
     height: calc(100vh - 150px);
     top: 150px;
     bottom: 0;
+    max-width: 700px;
     padding-bottom: 2rem;
     padding-right: 1rem;
     img {
