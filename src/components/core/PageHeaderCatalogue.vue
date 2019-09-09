@@ -1,17 +1,23 @@
 <template>
     <div class="page-header">
-    <!-- <fixed-header :threshold="250">
-            <div class="header-navbar">
+    <fixed-header :threshold="250">
+             <div class="header-navbar">
                 <div class="navbar-body cols">
                     
-                    <div class="col-3"></div>
-                    <div class="col-7" style="padding: .8rem 2.5rem;"><h3 class="thin">{{currentSubtopic}}</h3></div>
-                    <router-link class="col-2" :to="{name: 'Home'}">
+                    <router-link class="col-3" :to="{name: 'Home'}">
                         <img class="page-logo-sm" src="/images/background/logo_white_small.svg" alt="">
                     </router-link>
+                    <div class="col-6" style="padding: .8rem 2.5rem;"><h3 class="thin">{{currentSubtopic}}</h3></div>
+                    <div class="col-3">
+
+                        <label class="searchbar" style="margin: 0; margin-top: 1rem">
+                            <input type="text" value="Search" v-model="searchText">
+                            <i @click="goToCatalogue" class="fa fa-search" aria-hidden="true"></i>
+                        </label>
+                    </div>
                 </div>
             </div>
-        </fixed-header> -->
+        </fixed-header>
        <div class="page-bg"></div>
        <div class="page-bg-overlay"></div>
  
@@ -46,7 +52,11 @@ export default {
         left: 0;
         top: 0;
         width: 100vw;
-        background: #861F41;
+               background-image: url(/images/background/topic-bg.jpg);
+  background-size: cover;
+        .navbar-body {
+        background: rgba(0,0,0,0.5);
+        }
 
         color: white;
     }
@@ -55,7 +65,11 @@ export default {
         left: 0;
         top: 0;
         width: 100vw;
-        background: #861F41;
+                background-image: url(/images/background/topic-bg.jpg);
+  background-size: cover;
+        .navbar-body {
+        background: rgba(0,0,0,0.5);
+        }
         color: white;
         z-index: 100;
     }

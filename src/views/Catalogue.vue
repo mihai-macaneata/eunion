@@ -10,7 +10,7 @@
 
       </div>
       <div class="col-7 mt-4">
-        <div class="content-page">
+        <div class="content-page" style="margin-top: -7rem!important;">
           <div class="catalogue-header">
             <!-- <h1 class="mb-4" style="color:white;">Search</h1> -->
             <div style="position: relative">
@@ -332,7 +332,7 @@ var pagemap = require('pagemap');
 <style lang="scss" scoped>
 .catalogue-filters {
   position: sticky;
-  top:0;
+  top:68px;
 }
   .filters-list {
     .filter {
